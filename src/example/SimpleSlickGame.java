@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 //Sup
+//Holla Holla Get Dolla
 public class SimpleSlickGame extends BasicGame
 {
 	public SimpleSlickGame(String gamename)
