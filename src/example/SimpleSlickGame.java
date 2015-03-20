@@ -13,6 +13,7 @@ public class SimpleSlickGame extends BasicGame
 	public SimpleSlickGame(String gamename)
 	{
 		super(gamename);
+		
 	}
 
 	@Override
