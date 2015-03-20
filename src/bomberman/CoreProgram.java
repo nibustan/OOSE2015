@@ -1,16 +1,20 @@
-package example;
+package bomberman;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.tiled.TiledMap;
 //Sup
 //Holla Holla Get Dolla
-public class SimpleSlickGame extends BasicGame
+public class CoreProgram extends BasicGame
 {
-	public SimpleSlickGame(String gamename)
+	public static final int res = 1;
+	public CoreProgram(String gamename)
 	{
 		super(gamename);
 	}
@@ -22,7 +26,6 @@ public class SimpleSlickGame extends BasicGame
 
 	@Override
 	public void update(GameContainer gc, int i) throws SlickException {
-		
 	}
 
 	@Override
@@ -36,13 +39,13 @@ public class SimpleSlickGame extends BasicGame
 		try
 		{
 			AppGameContainer appgc;
-			appgc = new AppGameContainer(new SimpleSlickGame("Simple Slick Game"));
+			appgc = new AppGameContainer(new CoreProgram("Bomberman"));
 			appgc.setDisplayMode(640, 480, false);
 			appgc.start();
 		}
 		catch (SlickException ex)
 		{
-			Logger.getLogger(SimpleSlickGame.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(CoreProgram.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 }
