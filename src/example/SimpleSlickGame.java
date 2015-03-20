@@ -29,7 +29,7 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
-		g.drawString("First change to program", 300, 200);
+		g.drawString("hundreth change to program", 300, 200);
 	}
 
 	public static void main(String[] args)
