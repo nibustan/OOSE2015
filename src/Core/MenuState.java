@@ -18,7 +18,7 @@ public class MenuState extends BasicGameState{
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)throws SlickException {
-		
+		g.drawString("Menu", 50, 50);
 	}
 
 	@Override
