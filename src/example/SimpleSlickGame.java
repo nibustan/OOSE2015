@@ -30,6 +30,7 @@ public class SimpleSlickGame extends BasicGame
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
 		g.drawString("hundreth change to program", 300, 200);
+		g.drawString("They don't think it be like it is, but it do.",100,300);
 	}
 
 	public static void main(String[] args)
