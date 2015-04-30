@@ -6,7 +6,8 @@ public class Bombs {
 	int time = 0;
 	
 	public void timerBomb(){ //COUNTDOWN FOR BOMB EXPLOSION
-		time += getDelta(); //add the time passed since last update()
+		int delta = getDelta();
+		time += delta; //add the time passed since last update()
 	    if(time > 3000){ //3 seconds = 3000 ms
 	    	explodeBomb();
 	    	time = 0;
@@ -14,7 +15,7 @@ public class Bombs {
 	}
 	
 	public long getTime() {
-	    return System.nanoTime() / 1000000;
+	    return System.nanoTime() / 1000000; //The time
 	}
 
 	public int getDelta() {
