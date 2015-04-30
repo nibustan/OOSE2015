@@ -1,4 +1,4 @@
-package Core;
+package Core.Items;
 
 public class Bombs {
 

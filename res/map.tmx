@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="13" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="13" tilewidth="32" tileheight="32" nextobjectid="1">
  <tileset firstgid="1" name="tilea4" tilewidth="32" tileheight="32">
   <image source="tilea4.png" width="512" height="480"/>
  </tileset>
- <layer name="Floor" width="15" height="13" visible="0">
+ <layer name="Floor" width="22" height="13">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NjYGBgG8WjeBQzAAB2pxEBDAMAAA==
+   H4sIAAAAAAAAC2NjYGBgIxPHMeAG5JrJhsfMUXNHzR01d3iYCwBrdge7eAQAAA==
   </data>
  </layer>
- <layer name="Boxes" width="15" height="13">
+ <layer name="Boxes" width="22" height="13">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoA6Ig2JkNjofn14GLGpwiaPbSSwm1lx86vCZTcheQuYTUkuuvbTwLzHhTMh+UvyN7hZ0OWoAAIMldugMAwAA
+   H4sIAAAAAAAAC2NgoBzE4aCR5ePQ2Oh8athLSJwYc0jFlLiTGupwuYkS9xJyF6nm0Nq99A5fStMDIfeQm36R+bTIb6QCXOkGRAMAPtkHMXgEAAA=
   </data>
  </layer>
- <layer name="Wall" width="15" height="13" visible="0">
+ <layer name="Wall" width="22" height="13">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACwtkYGAIpACTA5D1MpJIj9o7ai8he8nFALbK2W8MAwAA
+   H4sIAAAAAAAACwtkYGAIJBPjA4TkydUHk2ckkR51L2nmjrqXPDAc3UuL8gEAEsjZFngEAAA=
   </data>
  </layer>
 </map>

@@ -44,10 +44,10 @@ public class PlayState extends BasicGameState{
 		map.render(0, 0, wallLayer);
 		
 		//Render Boxes
-		for(int x = 1; x<15; x++){
-			for(int y = 1; y<13; y++){
+		for(int x = 0; x<22; x++){
+			for(int y = 0; y<13; y++){
 				if(map.getTileId(x, y, boxLayer) != 0){
-					map.render(x*32, y*32, 2, 3, 1, 1);
+					map.render(x*32, y*32, 15, 0, 1, 1);
 				}
 			}
 		}

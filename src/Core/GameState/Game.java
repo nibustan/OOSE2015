@@ -43,7 +43,7 @@ public class Game extends StateBasedGame{
         	try
     		{
     			
-    			appgc = new AppGameContainer(new Game(gamename),680, 416, false);
+    			appgc = new AppGameContainer(new Game(gamename),704, 416, false);
     			appgc.start();
     		}
         	catch (SlickException ex)
