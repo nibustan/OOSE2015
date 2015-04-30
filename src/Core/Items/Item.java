@@ -1,4 +1,4 @@
-package Core;
+package Core.Items;
 
 //	The 'Item' class will be the parent class for the 'PowerUp' class and the 'PowerDown' class.
 //	Item's spawn from destroyed box objects
