@@ -1,12 +1,10 @@
-package Core;
+package Core.GameState;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-//import org.newdawn.slick.tiled.TiledMap;
 
 public class Game extends StateBasedGame{
 	
@@ -21,6 +19,7 @@ public class Game extends StateBasedGame{
 		this.addState(new MenuState(MENUSTATE));
 		this.addState(new PlayState(PLAYSTATE));
 		this.addState(new ScoreState(SCORESTATE));
+		enterState(PLAYSTATE);
 	}
 
 	@Override
@@ -28,18 +27,15 @@ public class Game extends StateBasedGame{
 		this.getState(MENUSTATE).init(gc, this);
 		this.getState(PLAYSTATE).init(gc, this);
 		this.getState(SCORESTATE).init(gc, this);
-		this.enterState(MENUSTATE);
 	}
 
-	/*@Override
-	public void update(GameContainer gc, int i) throws SlickException {
+	public void update(GameContainer gc, StateBasedGame sbg) throws SlickException {
 			
 	}
 
-	@Override
-	public void render(GameContainer gc, Graphics g) throws SlickException {
-		g.drawString("hundreth change to program", 300, 200);
-	}*/
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+
+	}
  
         public static void main(String[] args) {
         	
@@ -47,7 +43,7 @@ public class Game extends StateBasedGame{
         	try
     		{
     			
-    			appgc = new AppGameContainer(new Game(gamename), 800, 600, false);
+    			appgc = new AppGameContainer(new Game(gamename),680, 416, false);
     			appgc.start();
     		}
         	catch (SlickException ex)

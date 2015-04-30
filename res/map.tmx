@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="13" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="tilea4" tilewidth="32" tileheight="32">
+  <image source="tilea4.png" width="512" height="480"/>
+ </tileset>
+ <layer name="Floor" width="15" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NjYGBgG8WjeBQzAAB2pxEBDAMAAA==
+  </data>
+ </layer>
+ <layer name="Boxes" width="15" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoA6Ig2JkNjofn14GLGpwiaPbSSwm1lx86vCZTcheQuYTUkuuvbTwLzHhTMh+UvyN7hZ0OWoAAIMldugMAwAA
+  </data>
+ </layer>
+ <layer name="Wall" width="15" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACwtkYGAIpACTA5D1MpJIj9o7ai8he8nFALbK2W8MAwAA
+  </data>
+ </layer>
+</map>
