@@ -44,6 +44,7 @@ public class PlayState extends BasicGameState{
 		//Player 1
 		player1.x = 1;
 		player1.y = 1;
+		PlayState.map.setTileId(player1.x, player1.y, PlayState.player1Layer4, 1);
 		
 		player1.bombLength = 1;
 		
@@ -56,6 +57,7 @@ public class PlayState extends BasicGameState{
 		//Player 2
 		player2.x = 13;
 		player2.y = 11;
+		PlayState.map.setTileId(player2.x, player2.y, PlayState.player1Layer4, 1);
 		
 		player2.bombLength = 1;
 		
