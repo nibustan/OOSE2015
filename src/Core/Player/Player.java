@@ -12,6 +12,7 @@ public class Player {
 	public static int y;
 	public static int bombLength1;
 	
+	
 	public void init()throws SlickException {
 	}
 
@@ -54,7 +55,10 @@ public class Player {
 
 	public static void placeBomb(GameContainer gc)throws SlickException{
 		if (gc.getInput().isKeyPressed(Input.KEY_U)) {
-			if(bombLength1 <5 ){
+			
+			//PlayState.map.getTileId(x, y)
+			
+			if(bombLength1 < 5 ){
 			bombLength1++;
 			}
 		}

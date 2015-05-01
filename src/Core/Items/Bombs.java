@@ -35,6 +35,11 @@ public class Bombs {
 	
 	public void removeBomb(){
 		//REMOVE BOMB AFTER EXPLOSION
+		
+			
+			
+		}
+		
 	}
 
 }
