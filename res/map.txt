@@ -6,8 +6,13 @@ tileheight=32
 orientation=orthogonal
 
 [tilesets]
+<<<<<<< HEAD
 tileset=../Documents/Medialogy/MED4/OOSEproject/OOSE2015/res/tilea4.png,32,32,0,0
 tileset=../Documents/Medialogy/MED4/OOSEproject/OOSE2015/res/Bomberman01.png,32,32,0,0
+=======
+tileset=tilea4.png,32,32,0,0
+tileset=Bomberman01.png,32,32,0,0
+>>>>>>> branch 'master' of https://github.com/nibustan/OOSE2015.git
 
 [layer]
 type=Floor

@@ -25,8 +25,6 @@ public class Player {
 	int bombAmount = 1;
 	Bombs[] bombs = new Bombs[bombAmount];
 	
-	//Booleans
-	
 	public void init()throws SlickException {
 	}
 
@@ -106,6 +104,7 @@ public class Player {
 		}
 		
 	}
+
 
 	public void placeBomb(GameContainer gc)throws SlickException{
 		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {

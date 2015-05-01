@@ -39,6 +39,7 @@ public class PlayState extends BasicGameState{
 		player1Layer2 = map.getLayerIndex("Player1Layer2");
 		player1Layer3 = map.getLayerIndex("Player1Layer3");
 		player1Layer4 = map.getLayerIndex("Player1Layer4");
+
 		
 		//Player data setup initialization
 		//Player 1
@@ -80,35 +81,31 @@ public class PlayState extends BasicGameState{
 		map.render(0, 0, wallLayer);
 		
 		//Live Render For-loop
-		for(int x = 0; x<22; x++){
-			for(int y = 0; y<13; y++){
-				//Boxes
-				if(map.getTileId(x, y, boxLayer) == 94){
-					map.render(x*32, y*32, 15, 0, 1, 1);
+				for(int x = 0; x<22; x++){
+					for(int y = 0; y<13; y++){
+						//Boxes
+						if(map.getTileId(x, y, boxLayer) == 94){
+							map.render(x*32, y*32, 15, 0, 1, 1);
+						}
+						//Fire
+						if(map.getTileId(x, y, fireLayer) == 123){
+							map.render(x*32, y*32, 16, 0, 1, 1);
+						}
+						//Player
+						if(map.getTileId(x, y, player1Layer1) != 241 && map.getTileId(x, y, player1Layer2) != 0){
+							map.render(x*32, y*32, 15, 3, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer2) != 242 && map.getTileId(x, y, player1Layer2) != 0){
+							map.render(x*32, y*32, 15, 5, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer3) != 243 && map.getTileId(x, y, player1Layer3) != 0){
+							map.render(x*32, y*32, 15, 7, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer4) != 244 && map.getTileId(x, y, player1Layer4 ) != 0){
+							map.render(x*32, y*32, 15, 9, 1, 1);
+						}
+					}			
 				}
-				//Fire
-				if(map.getTileId(x, y, fireLayer) == 123){
-					map.render(x*32, y*32, 16, 0, 1, 1);
-				}
-				//Player
-				if(map.getTileId(x, y, player1Layer1) != 241 && map.getTileId(x, y, player1Layer2) != 0){
-					map.render(x*32, y*32, 15, 3, 1, 1);
-				}
-				if(map.getTileId(x, y, player1Layer2) != 242 && map.getTileId(x, y, player1Layer2) != 0){
-					map.render(x*32, y*32, 15, 5, 1, 1);
-				}
-				if(map.getTileId(x, y, player1Layer3) != 243 && map.getTileId(x, y, player1Layer3) != 0){
-					map.render(x*32, y*32, 15, 7, 1, 1);
-				}
-				if(map.getTileId(x, y, player1Layer4) != 244 && map.getTileId(x, y, player1Layer4 ) != 0){
-					map.render(x*32, y*32, 15, 9, 1, 1);
-				}
-				
-			}
-			
-		}
-
-	
 	}
 
 	@Override
@@ -121,6 +118,7 @@ public class PlayState extends BasicGameState{
 		
 		player1.movement(gc);
 		player1.placeBomb(gc);
+		
 		player2.movement(gc);
 		player2.placeBomb(gc);
 		

@@ -16,7 +16,7 @@ public class Bombs {
 	    if(time > 3000){ //3 seconds = 3000 milliseconds
 	    	explodeBomb(x, y, blastRadius);
 	    	time = 0;
-	    }	   
+	    } 
 	}
 	
 	public long getTime() {
@@ -123,6 +123,11 @@ public class Bombs {
 	
 	public void removeBomb(){
 		//REMOVE BOMB AFTER EXPLOSION
+		
+			
+			
+		}
+		
 	}
 
-}
+
