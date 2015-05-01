@@ -3,14 +3,42 @@
  <tileset firstgid="1" name="tilea4" tilewidth="32" tileheight="32">
   <image source="tilea4.png" width="512" height="480"/>
  </tileset>
+ <tileset firstgid="241" name="Bomberman01" tilewidth="32" tileheight="32">
+  <image source="Bomberman01.png" trans="ff00ff" width="128" height="32"/>
+ </tileset>
  <layer name="Floor" width="22" height="13">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NjYGBgIxPHMeAG5JrJhsfMUXNHzR01d3iYCwBrdge7eAQAAA==
+   H4sIAAAAAAAAC2NjYGBgIxPHAXE4DppcM0EYFwinkbmUuvfLEHPv5yHm3k9DzL0fh5h7cQFK3YuvfAAADMTAbXgEAAA=
+  </data>
+ </layer>
+ <layer name="FireLayer" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB0IJwMTay459Kh7R9076l7S3UsLAACTlvlbeAQAAA==
+  </data>
+ </layer>
+ <layer name="Player1Layer1" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB34SAYm1lxy6FH3jrp31L2ku5cWAABduu4leAQAAA==
+  </data>
+ </layer>
+ <layer name="Player1Layer2" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB34RAYm1lxy6FH3jrp31L2ku5cWAAAU4oX2eAQAAA==
+  </data>
+ </layer>
+ <layer name="Player1Layer3" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB34TAYm1lxy6FH3jrp31L2ku5cWAADT1Vy4eAQAAA==
+  </data>
+ </layer>
+ <layer name="Player1Layer4" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB34QgYm1lxy6FH3jrp31L2ku5cWAADHVCKLeAQAAA==
   </data>
  </layer>
  <layer name="Boxes" width="22" height="13">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoBzE4aCR5ePQ2Oh8athLSJwYc0jFlLiTGupwuYkS9xJyF6nm0Nq99A5fStMDIfeQm36R+bTIb6QCXOkGRAMAPtkHMXgEAAA=
+   H4sIAAAAAAAAC2NgoD2Ig2JkNjqfXHORaULixJhHKqbEneSqI+ReQnKkAnR3UWIOLdxL7/ClND0Qcg+1whmZTY38Rk0AAFdyQuh4BAAA
   </data>
  </layer>
  <layer name="Wall" width="22" height="13">
