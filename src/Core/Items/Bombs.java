@@ -11,7 +11,7 @@ public class Bombs {
 	    if(time > 3000){ //3 seconds = 3000 ms
 	    	explodeBomb();
 	    	time = 0;
-	    }	   
+	    } 
 	}
 	
 	public long getTime() {
@@ -42,4 +42,4 @@ public class Bombs {
 		
 	}
 
-}
+
