@@ -14,11 +14,18 @@ public class PlayState extends BasicGameState{
 	public static TiledMap map;
 	public static int wallLayer;
 	public static int boxLayer;
+	public static int bombLayer;
 	public static int fireLayer;
+	public static int fireLayerH;
+	public static int fireLayerV;
 	public static int player1Layer1;
 	public static int player1Layer2;
 	public static int player1Layer3;
 	public static int player1Layer4;
+	public static int player2Layer1;
+	public static int player2Layer2;
+	public static int player2Layer3;
+	public static int player2Layer4;
 	int floorLayer;
 	
 	Player player1 = new Player();
@@ -34,11 +41,24 @@ public class PlayState extends BasicGameState{
 		boxLayer = map.getLayerIndex("Boxes");
 		wallLayer = map.getLayerIndex("Wall");
 		floorLayer = map.getLayerIndex("Floor");
+		
+		//Bomb and Fire sprites
+		bombLayer = map.getLayerIndex("BombLayer");
 		fireLayer = map.getLayerIndex("FireLayer");
+		fireLayerH = map.getLayerIndex("FireLayerH");
+		fireLayerV = map.getLayerIndex("FireLayerV");
+		
+		//Player1 Sprites
 		player1Layer1 = map.getLayerIndex("Player1Layer1");
 		player1Layer2 = map.getLayerIndex("Player1Layer2");
 		player1Layer3 = map.getLayerIndex("Player1Layer3");
 		player1Layer4 = map.getLayerIndex("Player1Layer4");
+		
+		//Player2 Sprites
+		player2Layer1 = map.getLayerIndex("Player2Layer1");
+		player2Layer2 = map.getLayerIndex("Player2Layer2");
+		player2Layer3 = map.getLayerIndex("Player2Layer3");
+		player2Layer4 = map.getLayerIndex("Player2Layer4");
 
 		
 		//Player data setup initialization
@@ -58,15 +78,15 @@ public class PlayState extends BasicGameState{
 		//Player 2
 		player2.x = 13;
 		player2.y = 11;
-		PlayState.map.setTileId(player2.x, player2.y, PlayState.player1Layer4, 1);
+		PlayState.map.setTileId(player2.x, player2.y, PlayState.player2Layer4, 1);
 		
 		player2.bombLength = 1;
 		
-		player2.bombButton = "KEY_NUMPAD0";
-		player2.right = "KEY_NUMPAD6";
-		player2.left = "KEY_NUMPAD4";
-		player2.up = "KEY_NUMPAD8";
-		player2.down = "KEY_NUMPAD2";
+		player2.bombButton = "KEY_O";
+		player2.right = "KEY_L";
+		player2.left = "KEY_J";
+		player2.up = "KEY_I";
+		player2.down = "KEY_K";
 	}
 
 	@Override
