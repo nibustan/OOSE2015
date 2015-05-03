@@ -119,6 +119,7 @@ public class Bombs {
 		isExploded = true;
 		if(isExploded = true)
 			removeBomb();
+			isExploded = false;
 	}
 	
 	public void removeBomb(){

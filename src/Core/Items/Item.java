@@ -17,4 +17,44 @@ public class Item {
 	}
 	
 	
+	//Bomb Up - Adds 1 to the players bomb amount.
+	public static int bombUp(int bombAmount){
+		if(bombAmount > 4){
+			bombAmount++;
+		}
+		return bombAmount;
+	}
+	
+	//Bomb Down - Detracts 1 from the players bomb amount.
+	public static int bombDown(int bombAmount){
+		if(bombAmount > 1){
+			bombAmount--;
+		}
+		return bombAmount;
+	}
+	
+	//Fire Up - Adds 1 tilelength to the radius of a players bomblength.
+	public static int fireUp(int bombLength){
+		if(bombLength < 7){
+			bombLength++;
+		}
+		return bombLength;
+	}
+	
+	//Fire Down - Removes 1 tilelength from the radius of a players bomblength.
+	public static int fireDown(int bombLength){
+		if(bombLength > 1){
+			bombLength--;
+		}
+		return bombLength;
+	}
+	
+	//Power Bomb - Maxes out a players bombLength.
+	public static int powerBomb(int bombLength){
+		bombLength = 12;
+		
+		return bombLength;
+	}
+	
+	
 }
