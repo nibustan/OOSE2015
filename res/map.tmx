@@ -12,6 +12,9 @@
  <tileset firstgid="249" name="BombFire" tilewidth="32" tileheight="32">
   <image source="BombFire.png" width="128" height="32"/>
  </tileset>
+ <tileset firstgid="253" name="Items" tilewidth="32" tileheight="32">
+  <image source="Items.png" width="160" height="32"/>
+ </tileset>
  <layer name="Floor" width="22" height="13">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NjYGBgIxPHAXE4DppcM0EYFwin0NyvOMyl1L1faOTebzRy72caufcHjdz7iUbu/U4j936kkXtxgcGY334x4C8fAO0wTyN4BAAA
@@ -75,6 +78,31 @@
  <layer name="FireLayerV" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB34QyY9au6ouaPmDh5zaQEAnOo5FXgEAAA=
+  </data>
+ </layer>
+ <layer name="PowerBomb" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB1gZCQdE2suOfSoe0fdO+pe0t1LCwAAjH2KF3gEAAA=
+  </data>
+ </layer>
+ <layer name="FireDown" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoCFgJAMTay459Kh7R91LqrkD7V5keqDcSwMAACd90i14BAAA
+  </data>
+ </layer>
+ <layer name="FireUp" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB34TwYm1lxy6FH3jrp31L2ku5cWAAB1uBNDeAQAAA==
+  </data>
+ </layer>
+ <layer name="BombDown" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB34RwYm1lxy6FH3jrp31L2ku5cWAACyj8oNeAQAAA==
+  </data>
+ </layer>
+ <layer name="BombUp" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB34SwYm1lxy6FH3jrp31L2ku5cWAAD716HeeAQAAA==
   </data>
  </layer>
  <layer name="Boxes" width="22" height="13" visible="0">
