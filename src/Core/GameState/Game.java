@@ -12,6 +12,8 @@ public class Game extends StateBasedGame{
 	public static final int MENUSTATE = 0;
 	public static final int PLAYSTATE = 1;
 	public static final int SCORESTATE = 2;
+	static int maxFPS = 60;
+	
 	
 	public Game(String gamename)
 	{
@@ -20,6 +22,7 @@ public class Game extends StateBasedGame{
 		this.addState(new PlayState(PLAYSTATE));
 		this.addState(new ScoreState(SCORESTATE));
 		enterState(PLAYSTATE);
+		
 	}
 
 	@Override
@@ -45,6 +48,7 @@ public class Game extends StateBasedGame{
     			
     			appgc = new AppGameContainer(new Game(gamename),704, 416, false);
     			appgc.start();
+    			appgc.setTargetFrameRate(maxFPS);
     		}
         	catch (SlickException ex)
     		{

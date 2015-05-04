@@ -10,7 +10,8 @@ public class Bombs {
 	public boolean hitWallDown;
 	protected long timerStart = 0;
 	protected long timerDif = 0;
-	protected int timerAmount = 3000; // = 3 second
+	protected int timerAmountBomb = 3000; // = 3 second
+	protected int timerAmountFire = 1000; // = 1 second
 	public boolean isExploded = false;
 
 	public void timerBomb (int x, int y, int blastRadius){
@@ -18,8 +19,9 @@ public class Bombs {
 			timerStart = System.currentTimeMillis();
 		}else{
 		  	timerDif = System.currentTimeMillis();
-				if(timerDif-timerStart > timerAmount){
+				if(timerDif-timerStart > timerAmountBomb){
 					explodeBomb (x,y,blastRadius);
+					System.out.println("boom!");
 					timerStart = 0;
 					timerDif = 0;
 			  }
@@ -125,21 +127,23 @@ public class Bombs {
 		
 	}
 	
-	void removeFire(){
-		int delta = getDelta();
-		time += delta; //add the time passed since last update()
-	    if(time > 1000){ //1 seconds = 1000 milliseconds
-	    	for(int i = 0; i<22; i++){
-				for(int j = 0; j<13; j++){
-					if(PlayState.map.getTileId(i, j, PlayState.fireLayer) == 123){
-						PlayState.map.setTileId(i, j, PlayState.fireLayer, 122);
+	*/
+	public void removeFire (){
+		if(timerStart == 0){
+			timerStart = System.currentTimeMillis();
+		}else{
+		  	timerDif = System.currentTimeMillis();
+				if(timerDif-timerStart > timerAmountFire){
+					for(int i = 0; i<22; i++){
+						for(int j = 0; j<13; j++){
+							if(PlayState.map.getTileId(i, j, PlayState.fireLayer) == 123){
+								PlayState.map.setTileId(i, j, PlayState.fireLayer, 122);
+							}
 						}
 					}
+					timerStart = 0;
+					timerDif = 0;
 				}
-	    	time = 0;
-	    }
-		
-	}
-	*/
-		
+		 }
+	}	
 }
