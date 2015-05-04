@@ -37,7 +37,6 @@ public class Player {
 
 	public void update(GameContainer gc) throws SlickException {
 		//Bomb Update
-		
 		for(int i = 0; i<=bombs.size()-1; i++){
 			if(bombs.get(i).isExploded == true){
 				bombs.remove(i);

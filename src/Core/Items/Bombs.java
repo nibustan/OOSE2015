@@ -1,5 +1,6 @@
 package Core.Items;
 import Core.GameState.PlayState;
+
 public class Bombs {
 	public int x,y,blastRadius;
 
@@ -7,11 +8,17 @@ public class Bombs {
 	public boolean hitWallLeft;
 	public boolean hitWallUp;
 	public boolean hitWallDown;
+	
 	protected long timerStart = 0;
+	protected long timerStartFire = 0;
 	protected long timerDif = 0;
+	protected long timerDifFire = 0;
 	protected int timerAmountBomb = 3000; // = 3 second
 	protected int timerAmountFire = 1000; // = 1 second
-	public boolean isExploded = false;
+	
+	boolean startRemoveFire;
+	boolean fireStart;
+	public boolean isExploded;
 	
 	public Bombs(int x, int y, int blastRadius) {
 		this.x = x;
@@ -21,17 +28,22 @@ public class Bombs {
 
 	public void init(){
 		timerStart = System.currentTimeMillis();
-		System.out.println("hej");
+		isExploded = false;
+		fireStart = true;
+		startRemoveFire = false;
 	}
-	
+		
 	public void update(){
 		timerBomb();
-		System.out.println(timerStart);
+		if(startRemoveFire == true){
+		removeFire();
+		}
 	}
 	
 	public void timerBomb (){
 		  	timerDif = System.currentTimeMillis();
 				if(timerDif-timerStart > timerAmountBomb){
+					System.out.println("timerbomb");
 					explodeBomb ();
 					timerStart = 0;
 					timerDif = 0;
@@ -139,22 +151,39 @@ public class Bombs {
 				map.setTileId(x, y - 4, boxLayer, 0);
 			}*/
 			
-		isExploded = true;
 			
+			if(fireStart == true){
+				fireStart = false;
+			timerStartFire = System.currentTimeMillis();
+			startRemoveFire = true;
+			}
 	}
 
 	public void removeFire (){
-		  	timerDif = System.currentTimeMillis();
-				if(timerDif-timerStart > timerAmountFire){
-					for(int i = 0; i<22; i++){
-						for(int j = 0; j<13; j++){
-							if(PlayState.map.getTileId(i, j, PlayState.fireLayer) == 123){
-								PlayState.map.setTileId(i, j, PlayState.fireLayer, 122);
-							}
-						}
+		timerDifFire = System.currentTimeMillis();
+		if(timerDifFire-timerStartFire > timerAmountFire){
+			//Removes fire
+			System.out.println("removefire");
+			for(int i = 0; i<22; i++){
+				for(int j = 0; j<13; j++){
+					if(PlayState.map.getTileId(i, j, PlayState.fireLayer) == 123){
+						PlayState.map.setTileId(i, j, PlayState.fireLayer, 122);
 					}
-					timerStart = 0;
-					timerDif = 0;
+					if(PlayState.map.getTileId(i, j, PlayState.fireLayerV) == 143){
+						PlayState.map.setTileId(i, j, PlayState.fireLayerV, 122);
+					}
+					if(PlayState.map.getTileId(i, j, PlayState.fireLayerH) == 133){
+						PlayState.map.setTileId(i, j, PlayState.fireLayerH, 122);
+					}
 				}
-		 }
-	}	
+			}
+			
+			timerStartFire = 0;
+			timerDifFire = 0;
+			isExploded = true;
+			}
+		
+		
+		}
+	
+}	
