@@ -50,15 +50,11 @@ public class PlayState extends BasicGameState{
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg)throws SlickException {
 		//TiledMap setup initialization
-		map = new TiledMap("res/map.tmx");
+		map = new TiledMap("res/map1.tmx");
 		boxLayer = map.getLayerIndex("BoxesLayer");
 		wallLayer = map.getLayerIndex("WallLayer");
 		floorLayer = map.getLayerIndex("FloorLayer");
-		
-		boxLayer = map.getLayerIndex("Boxes");
-		wallLayer = map.getLayerIndex("Wall");
-		floorLayer = map.getLayerIndex("Floor");
-		
+	
 		//Bomb and Fire sprites initialization
 		bombLayer = map.getLayerIndex("BombLayer");
 		fireLayer = map.getLayerIndex("FireLayer");
@@ -117,6 +113,8 @@ public class PlayState extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)throws SlickException {
 		//GUI
 		g.drawString("P1 Blvl = "+ String.valueOf(player1.bombLength), 540, 50);
+		g.drawString("P1 BAct = "+ String.valueOf(player1.bombsActive), 540, 75);
+		
 		g.drawString("P2 Blvl = "+ String.valueOf(player2.bombLength), 540, 350);
 		
 		//Render Map
@@ -128,34 +126,33 @@ public class PlayState extends BasicGameState{
 				for(int x = 0; x<22; x++){
 					for(int y = 0; y<13; y++){
 						//Boxes
-						if(map.getTileId(x, y, boxLayer) == 94){
+						if(map.getTileId(x, y, boxLayer) == 111){
 							map.render(x*32, y*32, 15, 0, 1, 1);
 						}
 						//Fire
 						if(map.getTileId(x, y, fireLayer) == 123){
-							map.render(x*32, y*32, 16, 0, 1, 1);
+							map.render(x*32, y*32, 16, 5, 1, 1);
 						}
 						//Bomb
 						if(map.getTileId(x, y, bombLayer) == 25){
-							map.render(x*32, y*32, 15, 10, 1, 1);
+							map.render(x*32, y*32, 16, 4, 1, 1);
+						}
+						
+						//Player1
+						if(map.getTileId(x, y, player1Layer1) != 1 && map.getTileId(x, y, player1Layer2) != 0){
+							map.render(x*32, y*32, 15, 2, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer2) != 2 && map.getTileId(x, y, player1Layer2) != 0){
+							map.render(x*32, y*32, 15, 4, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer3) != 3 && map.getTileId(x, y, player1Layer3) != 0){
+							map.render(x*32, y*32, 15, 6, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer4) != 4 && map.getTileId(x, y, player1Layer4 ) != 0){
+							map.render(x*32, y*32, 15, 8, 1, 1);
 						}
 						
 						//Player
-
-						//Player1
-
-						if(map.getTileId(x, y, player1Layer1) != 241 && map.getTileId(x, y, player1Layer2) != 0){
-							map.render(x*32, y*32, 15, 3, 1, 1);
-						}
-						if(map.getTileId(x, y, player1Layer2) != 242 && map.getTileId(x, y, player1Layer2) != 0){
-							map.render(x*32, y*32, 15, 5, 1, 1);
-						}
-						if(map.getTileId(x, y, player1Layer3) != 243 && map.getTileId(x, y, player1Layer3) != 0){
-							map.render(x*32, y*32, 15, 7, 1, 1);
-						}
-						if(map.getTileId(x, y, player1Layer4) != 244 && map.getTileId(x, y, player1Layer4 ) != 0){
-							map.render(x*32, y*32, 15, 9, 1, 1);
-						}
 					
 					}			
 				}
