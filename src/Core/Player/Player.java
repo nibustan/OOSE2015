@@ -1,5 +1,7 @@
 package Core.Player;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
@@ -26,19 +28,22 @@ public class Player {
 
 	public int bombAmount = 4;
 	public int bombsActive = 0;
-
-	Bombs[] bombs = new Bombs[bombAmount];
+	
+	ArrayList<Bombs> bombs = new ArrayList<Bombs>();
+	//Bombs[] bombs = new Bombs[bombAmount];
 	
 	public void init()throws SlickException {
 	}
 
-	public void  update(GameContainer gc) throws SlickException {
+	public void update(GameContainer gc) throws SlickException {
 		//Bomb Update
-		for(int i = 0; i<bombsActive; i++){
-			if(bombs[bombsActive].isExploded == true){
-				bombsActive--;
+		
+		for(int i = 0; i<=bombs.size()-1; i++){
+			if(bombs.get(i).isExploded == true){
+				bombs.remove(i);
 			} else {
-				bombs[bombsActive].update();
+				bombs.get(i).update();
+				
 			}
 			
 		}
@@ -123,9 +128,9 @@ public class Player {
 
 	public void placeBomb(GameContainer gc)throws SlickException{
 		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
-			if(bombsActive < bombAmount-1 && PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25){
-				bombsActive++;
-			bombs[bombsActive] = new Bombs(x,y,bombLength);
+			if(bombs.size() < 3 && PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25){
+			bombs.add(new Bombs(x,y,bombLength));
+			bombs.get(bombs.size()-1).init();
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 25);
 			}
 		}	

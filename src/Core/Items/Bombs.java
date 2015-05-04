@@ -1,5 +1,4 @@
 package Core.Items;
-import Core.Player.Player;
 import Core.GameState.PlayState;
 //Sup
 public class Bombs {
@@ -21,29 +20,28 @@ public class Bombs {
 		this.blastRadius = blastRadius;
 	}
 
+	public void init(){
+		timerStart = System.currentTimeMillis();
+		System.out.println("hej");
+	}
+	
+	public void update(){
+		timerBomb();
+		System.out.println(timerStart);
+	}
+	
 	public void timerBomb (){
-		
-		System.out.println("TEST");
-		
-		if(timerStart == 0){
-			timerStart = System.currentTimeMillis();
-		}else{
 		  	timerDif = System.currentTimeMillis();
 		  	
 				if(timerDif-timerStart > timerAmountBomb){
-					explodeBomb (x,y,blastRadius);
+					explodeBomb ();
 					
 					timerStart = 0;
 					timerDif = 0;
 				}
-			  }
-			}
-	
-	public void update(){
-		timerBomb();
-	}
+			  }	
 
-	public void explodeBomb(int x, int y, int blastRadius){ //BOMB EXPLOSION
+	public void explodeBomb(){ //BOMB EXPLOSION
 			
 			hitWallRight = false;
 			hitWallLeft = false;
@@ -135,9 +133,6 @@ public class Bombs {
 	}
 
 	public void removeFire (){
-		if(timerStart == 0){
-			timerStart = System.currentTimeMillis();
-		}else{
 		  	timerDif = System.currentTimeMillis();
 				if(timerDif-timerStart > timerAmountFire){
 					for(int i = 0; i<22; i++){
@@ -152,4 +147,3 @@ public class Bombs {
 				}
 		 }
 	}	
-}
