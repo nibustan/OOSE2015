@@ -1,10 +1,14 @@
 package Core.Items;
 import java.util.Random;
+import Core.GameState.PlayState;
 
 
 //	Items spawn from destroyed box objects
 
 public class Item {
+	
+	public int x,y,bombAmount;
+
 	
 	public static void main(String[] args) {
 		
@@ -13,31 +17,40 @@ public class Item {
 	
 //	Has a 'Player' moved onto the same tile as the Item?
 	boolean pickedUp = false;
-	
-	
-		
 	}
 	
-	public void randomChance(int bombAmount){
+	public void Items(int x, int y, int bombAmount) {
+		this.x = x;
+		this.y = y;
+		this.bombAmount = bombAmount;
+	}
+	
+	public void update(){
+		randomDrop();
+	}
+	
+	public void randomDrop(){
 		int min = 0;
 		int max = 5;
 		Random rand = new Random();
 		int randomNum = rand.nextInt((max - min) + 1) + min;
 		if(randomNum == 1){
-			bombUp(bombAmount);
+			bombUp(x,y,bombAmount);
 		} else if (randomNum == 2){
-			bombDown(bombAmount);
+			bombDown(x,y,bombAmount);
 		} else if (randomNum == 3){
-			fireUp(bombAmount);
+			fireUp(x,y,bombAmount);
 		} else if (randomNum == 4){
-			fireDown(bombAmount);
+			fireDown(x,y,bombAmount);
 		} else if (randomNum == 5){
-			powerBomb(bombAmount);
+			powerBomb(x,y,bombAmount);
 		}
 	}
 	
 	//Bomb Up - Adds 1 to the players bomb amount.
-	public static int bombUp(int bombAmount){
+	public static int bombUp(int x, int y,int bombAmount){
+		PlayState.map.setTileId(x, y, PlayState.bombUpLayer, 155);
+		
 		if(bombAmount > 4){
 			bombAmount++;
 		}
@@ -45,7 +58,9 @@ public class Item {
 	}
 	
 	//Bomb Down - Detracts 1 from the players bomb amount.
-	public static int bombDown(int bombAmount){
+	public static int bombDown(int x, int y,int bombAmount){
+		PlayState.map.setTileId(x, y, PlayState.bombDownLayer, 165);
+		
 		if(bombAmount > 1){
 			bombAmount--;
 		}
@@ -53,7 +68,9 @@ public class Item {
 	}
 	
 	//Fire Up - Adds 1 tilelength to the radius of a players bomblength.
-	public static int fireUp(int bombLength){
+	public static int fireUp(int x, int y,int bombLength){
+		PlayState.map.setTileId(x, y, PlayState.fireUpLayer, 175);
+		
 		if(bombLength < 7){
 			bombLength++;
 		}
@@ -61,7 +78,9 @@ public class Item {
 	}
 	
 	//Fire Down - Removes 1 tilelength from the radius of a players bomblength.
-	public static int fireDown(int bombLength){
+	public static int fireDown(int x, int y,int bombLength){
+		PlayState.map.setTileId(x, y, PlayState.fireDownLayer, 185);
+		
 		if(bombLength > 1){
 			bombLength--;
 		}
@@ -69,7 +88,9 @@ public class Item {
 	}
 	
 	//Power Bomb - Maxes out a players bombLength.
-	public static int powerBomb(int bombLength){
+	public static int powerBomb(int x, int y,int bombLength){
+		PlayState.map.setTileId(x, y, PlayState.powerBombLayer, 195);
+		
 		bombLength = 12;
 		
 		return bombLength;

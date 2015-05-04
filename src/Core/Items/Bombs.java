@@ -1,5 +1,6 @@
 package Core.Items;
 import Core.GameState.PlayState;
+//import Core.Items.Item;
 
 public class Bombs {
 	public int x,y,blastRadius;
@@ -77,6 +78,7 @@ public class Bombs {
 			//Right
 			if (PlayState.map.getTileId(x + 1, y, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x + 1, y, PlayState.boxLayer, 0);
+				//randomDrop();
 			}
 			/*else if(PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 1 || PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 81){
 				hitWallRight = true;
@@ -100,7 +102,7 @@ public class Bombs {
 			//Left
 			if (PlayState.map.getTileId(x - 1, y, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x - 1, y, PlayState.boxLayer, 0);
-				
+				//randomDrop();
 			}
 			/*else if(PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 1 || PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 81){
 				hitWallRight = true;
@@ -124,7 +126,7 @@ public class Bombs {
 			//Down
 			if (PlayState.map.getTileId(x, y + 1, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x, y + 1, PlayState.boxLayer, 0);
-				
+				//randomDrop();
 			}
 			/*else if(map.getTileId(x, y + 2, boxLayer) == 94 && blastRadius >= 2){
 				map.setTileId(x, y + 2, boxLayer, 0);
@@ -139,7 +141,7 @@ public class Bombs {
 			//Up
 			if (PlayState.map.getTileId(x, y - 1, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x, y - 1, PlayState.boxLayer, 0);
-				
+				//randomDrop();
 			}
 			/*else if(map.getTileId(x, y - 2, boxLayer) == 94 && blastRadius >= 2){
 				map.setTileId(x, y - 2, boxLayer, 0);
