@@ -1,4 +1,5 @@
 package Core.Items;
+
 import Core.GameState.PlayState;
 
 public class Bombs {
@@ -7,6 +8,7 @@ public class Bombs {
 	public boolean hitWallLeft;
 	public boolean hitWallUp;
 	public boolean hitWallDown;
+<<<<<<< Updated upstream
 	public boolean isExploded = false;
 	int time = 0;
 	
@@ -18,28 +20,45 @@ public class Bombs {
 	    	time = 0;
 	    } 
 	}
+=======
+	boolean isExploded = false;
+	int time = 3;
+	int delay = 3000;
+	int pastTime = 0;
+	long test = System.currentTimeMillis();
+	protected long timerStart = 0;
+	protected long timerDif = 0;
+	protected int timerAmount = 3000; // = 3 second
+>>>>>>> Stashed changes
 	
-	public long getTime() {
-	    return System.nanoTime() / 1000000000; //The time
+	public void timerBomb (int x, int y, int blastRadius){
+		if(isExploded == false){
+			isExploded = true;
+			timerStart = System.currentTimeMillis();
+			explodeBomb(x,y,blastRadius);
+			}
+			else{
+			timerDif = System.currentTimeMillis();
+				if(timerDif > timerAmount){
+					timerStart = 0;
+					timerDif = 0;
+					isExploded = true;
+			}
+		}
 	}
 
-	public int getDelta() {
-		long lastFrame = 0;
-	    long time = getTime();
-	    int delta = (int) (time - lastFrame);
-	    lastFrame = time;
-	         
-	    return delta;
-	}
-	
 	public void explodeBomb(int x, int y, int blastRadius){ //BOMB EXPLOSION
 			
 			hitWallRight = false;
 			hitWallLeft = false;
 			hitWallUp = false;
 			hitWallDown = false;
+<<<<<<< Updated upstream
 			//Removes bomb
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 26);
+=======
+	
+>>>>>>> Stashed changes
 			
 			//Right
 			if (PlayState.map.getTileId(x + 1, y, PlayState.boxLayer) == 94) {
@@ -119,13 +138,10 @@ public class Bombs {
 				map.setTileId(x, y - 4, boxLayer, 0);
 			}*/
 
-		isExploded = true;
-		if(isExploded = true)
-			removeBomb();
-			isExploded = false;
 	}
 	
 	public void removeBomb(){
+<<<<<<< Updated upstream
 		//REMOVE BOMB AFTER EXPLOSION			
 			removeFire();
 		
@@ -145,6 +161,12 @@ public class Bombs {
 	    	time = 0;
 	}
 		
+=======
+		//REMOVE BOMB AFTER EXPLOSION
+			
+>>>>>>> Stashed changes
 	}
+		
+}
 
 }
