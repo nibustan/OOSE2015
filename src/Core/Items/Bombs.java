@@ -1,7 +1,7 @@
 package Core.Items;
 import Core.Player.Player;
 import Core.GameState.PlayState;
-
+//Sup
 public class Bombs {
 
 	public boolean hitWallRight;
@@ -10,21 +10,26 @@ public class Bombs {
 	public boolean hitWallDown;
 	protected long timerStart = 0;
 	protected long timerDif = 0;
-	protected int timerAmount = 3000; // = 3 second
+	protected int timerAmountBomb = 3000; // = 3 second
+	protected int timerAmountFire = 1000; // = 1 second
 	public boolean isExploded = false;
 
 	public void timerBomb (int x, int y, int blastRadius){
-		//if(timerStart == 0){
-			//timerStart = System.currentTimeMillis();
-		//}else{
-		  	//timerDif = System.currentTimeMillis();
-				//if(timerDif-timerStart > timerAmount){
+
+		if(timerStart == 0){
+			timerStart = System.currentTimeMillis();
+		}else{
+		  	timerDif = System.currentTimeMillis();
+				if(timerDif-timerStart > timerAmountBomb){
+
 					explodeBomb (x,y,blastRadius);
-				//	timerStart = 0;
-				//	timerDif = 0;
+
+					System.out.println("boom!");
+					timerStart = 0;
+					timerDif = 0;
+				}
 			  }
-		// }
-	//}
+			}
 	
 	/*void update(int x, int y, int blastRadius){
 		timerBomb(x, y, blastRadius);
@@ -117,30 +122,26 @@ public class Bombs {
 				map.setTileId(x, y - 4, boxLayer, 0);
 			}*/
 			
-		isExploded = true;	
+		isExploded = true;
+		removeFire();
 	}
-	/*
-	public void removeBomb(){
-		//REMOVE BOMB AFTER EXPLOSION			
-			removeFire();
-		
-	}
-	
-	void removeFire(){
-		int delta = getDelta();
-		time += delta; //add the time passed since last update()
-	    if(time > 1000){ //1 seconds = 1000 milliseconds
-	    	for(int i = 0; i<22; i++){
-				for(int j = 0; j<13; j++){
-					if(PlayState.map.getTileId(i, j, PlayState.fireLayer) == 123){
-						PlayState.map.setTileId(i, j, PlayState.fireLayer, 122);
+
+	public void removeFire (){
+		if(timerStart == 0){
+			timerStart = System.currentTimeMillis();
+		}else{
+		  	timerDif = System.currentTimeMillis();
+				if(timerDif-timerStart > timerAmountFire){
+					for(int i = 0; i<22; i++){
+						for(int j = 0; j<13; j++){
+							if(PlayState.map.getTileId(i, j, PlayState.fireLayer) == 123){
+								PlayState.map.setTileId(i, j, PlayState.fireLayer, 122);
+							}
 						}
 					}
+					timerStart = 0;
+					timerDif = 0;
 				}
-	    	time = 0;
-	    }
-		
-	}
-	*/
-		
+		 }
+	}	
 }

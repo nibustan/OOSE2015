@@ -1,9 +1,13 @@
 package Core.Items;
 
+import java.util.Random;
+
 
 //	Items spawn from destroyed box objects
 
 public class Item {
+	
+	Random rand;
 
 	public static void main(String[] args) {
 		
@@ -17,6 +21,23 @@ public class Item {
 		
 	}
 	
+	public void randomChance(int bombAmount){
+		int min = 0;
+		int max = 5;
+		rand = new Random();
+		int randomNum = rand.nextInt((max - min) + 1) + min;
+		if(randomNum == 1){
+			bombUp(bombAmount);
+		} else if (randomNum == 2){
+			bombDown(bombAmount);
+		} else if (randomNum == 3){
+			fireUp(bombAmount);
+		} else if (randomNum == 4){
+			fireDown(bombAmount);
+		} else if (randomNum == 5){
+			powerBomb(bombAmount);
+		}
+	}
 	
 	//Bomb Up - Adds 1 to the players bomb amount.
 	public static int bombUp(int bombAmount){
@@ -56,6 +77,4 @@ public class Item {
 		
 		return bombLength;
 	}
-	
-	
 }
