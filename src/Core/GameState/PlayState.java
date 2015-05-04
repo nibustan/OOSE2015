@@ -14,7 +14,7 @@ public class PlayState extends BasicGameState{
 	public static TiledMap map;
 	public static int wallLayer;
 	public static int boxLayer;
-	int floorLayer;
+	public static int floorLayer;
 	
 	public static int fireLayer;
 	public static int fireLayerH;
@@ -132,6 +132,14 @@ public class PlayState extends BasicGameState{
 						//Fire
 						if(map.getTileId(x, y, fireLayer) == 123){
 							map.render(x*32, y*32, 16, 5, 1, 1);
+						}
+						//FireH
+						if(map.getTileId(x, y, fireLayerH) == 133){
+							map.render(x*32, y*32, 16, 6, 1, 1);
+						}
+						//FireV
+						if(map.getTileId(x, y, fireLayerV) == 143){
+							map.render(x*32, y*32, 16, 7, 1, 1);
 						}
 						//Bomb
 						if(map.getTileId(x, y, bombLayer) == 25){

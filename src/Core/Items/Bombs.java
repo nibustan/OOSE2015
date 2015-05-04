@@ -1,6 +1,5 @@
 package Core.Items;
 import Core.GameState.PlayState;
-//Sup
 public class Bombs {
 	public int x,y,blastRadius;
 
@@ -32,10 +31,8 @@ public class Bombs {
 	
 	public void timerBomb (){
 		  	timerDif = System.currentTimeMillis();
-		  	
 				if(timerDif-timerStart > timerAmountBomb){
 					explodeBomb ();
-					
 					timerStart = 0;
 					timerDif = 0;
 				}
@@ -50,10 +47,24 @@ public class Bombs {
 			
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 26);
 			
+			//Middle
+			PlayState.map.setTileId(x, y, PlayState.fireLayer, 123);
+			
+			//Right
+			PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
+			
+			//Left
+			PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
+			
+			//Up
+			PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
+			
+			//Down
+			PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
+			
 			//Right
 			if (PlayState.map.getTileId(x + 1, y, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x + 1, y, PlayState.boxLayer, 0);
-				PlayState.map.setTileId(x + 1, y, PlayState.fireLayer, 123);
 			}
 			/*else if(PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 1 || PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 81){
 				hitWallRight = true;
@@ -77,7 +88,7 @@ public class Bombs {
 			//Left
 			if (PlayState.map.getTileId(x - 1, y, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x - 1, y, PlayState.boxLayer, 0);
-				PlayState.map.setTileId(x - 1, y, PlayState.fireLayer, 123);
+				
 			}
 			/*else if(PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 1 || PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 81){
 				hitWallRight = true;
@@ -101,7 +112,7 @@ public class Bombs {
 			//Down
 			if (PlayState.map.getTileId(x, y + 1, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x, y + 1, PlayState.boxLayer, 0);
-				PlayState.map.setTileId(x, y + 1, PlayState.fireLayer, 123);
+				
 			}
 			/*else if(map.getTileId(x, y + 2, boxLayer) == 94 && blastRadius >= 2){
 				map.setTileId(x, y + 2, boxLayer, 0);
@@ -116,7 +127,7 @@ public class Bombs {
 			//Up
 			if (PlayState.map.getTileId(x, y - 1, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x, y - 1, PlayState.boxLayer, 0);
-				PlayState.map.setTileId(x, y - 1, PlayState.fireLayer, 123);
+				
 			}
 			/*else if(map.getTileId(x, y - 2, boxLayer) == 94 && blastRadius >= 2){
 				map.setTileId(x, y - 2, boxLayer, 0);
@@ -129,7 +140,7 @@ public class Bombs {
 			}*/
 			
 		isExploded = true;
-		removeFire();
+			
 	}
 
 	public void removeFire (){
