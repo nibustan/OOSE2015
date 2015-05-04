@@ -7,7 +7,7 @@ public class Bombs {
 	public boolean hitWallLeft;
 	public boolean hitWallUp;
 	public boolean hitWallDown;
-	boolean isExploded = false;
+	public boolean isExploded = false;
 	int time = 0;
 	
 	public void timerBomb(int x, int y, int blastRadius){ //COUNTDOWN FOR BOMB EXPLOSION
@@ -33,10 +33,13 @@ public class Bombs {
 	}
 	
 	public void explodeBomb(int x, int y, int blastRadius){ //BOMB EXPLOSION
+			
 			hitWallRight = false;
 			hitWallLeft = false;
 			hitWallUp = false;
 			hitWallDown = false;
+			//Removes bomb
+			PlayState.map.setTileId(x, y, PlayState.bombLayer, 26);
 			
 			//Right
 			if (PlayState.map.getTileId(x + 1, y, PlayState.boxLayer) == 94) {
@@ -115,19 +118,25 @@ public class Bombs {
 			else if(map.getTileId(x, y - 4, boxLayer) == 94 && blastRadius == 4){
 				map.setTileId(x, y - 4, boxLayer, 0);
 			}*/
-
-		isExploded = true;
-		if(isExploded = true)
-			removeBomb();
-	}
-	
-	public void removeBomb(){
-		//REMOVE BOMB AFTER EXPLOSION
+			
+			removeFire();
 		
-			
-			
 		}
+
+	void removeFire(){
+		int delta = getDelta();
+		time += delta; //add the time passed since last update()
+	    if(time > 1000){ //1 seconds = 1000 milliseconds
+	    	for(int i = 0; i<22; i++){
+				for(int j = 0; j<13; j++){
+					if(PlayState.map.getTileId(i, j, PlayState.fireLayer) == 123){
+						PlayState.map.setTileId(i, j, PlayState.fireLayer, 122);
+						}
+					}
+				}
+	    	time = 0;
+	}
 		
 	}
 
-
+}

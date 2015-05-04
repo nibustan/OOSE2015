@@ -6,7 +6,7 @@
  <tileset firstgid="241" name="Bomberman01" tilewidth="32" tileheight="32">
   <image source="Bomberman01.png" trans="ff00ff" width="128" height="32"/>
  </tileset>
- <layer name="Floor" width="22" height="13">
+ <layer name="FloorLayer" width="22" height="13">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NjYGBgIxPHAXE4DppcM0EYFwinkbmUuvfLEHPv5yHm3k9DzL0fh5h7cQFK3YuvfAAADMTAbXgEAAA=
   </data>
@@ -14,6 +14,11 @@
  <layer name="FireLayer" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB0IJwMTay459Kh7R9076l7S3UsLAACTlvlbeAQAAA==
+  </data>
+ </layer>
+ <layer name="BombLayer" width="22" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB2YRwYm1lxy6FH3jgz34hIfrO6lVjjTyr20AACoOeh8eAQAAA==
   </data>
  </layer>
  <layer name="Player1Layer1" width="22" height="13" visible="0">
@@ -36,12 +41,12 @@
    H4sIAAAAAAAAC2NgoB34QgYm1lxy6FH3jrp31L2ku5cWAADHVCKLeAQAAA==
   </data>
  </layer>
- <layer name="Boxes" width="22" height="13">
+ <layer name="BoxesLayer" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoD2Ig2JkNjqfXHORaULixJhHKqbEneSqI+ReQnKkAnR3UWIOLdxL7/ClND0Qcg+1whmZTY38Rk0AAFdyQuh4BAAA
   </data>
  </layer>
- <layer name="Wall" width="22" height="13">
+ <layer name="WallLayer" width="22" height="13">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAACwtkYGAIJBPjA4TkydUHk2ckkR51L2nmjrqXPDAc3UuL8gEAEsjZFngEAAA=
   </data>

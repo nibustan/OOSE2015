@@ -19,6 +19,7 @@ public class PlayState extends BasicGameState{
 	public static int player1Layer2;
 	public static int player1Layer3;
 	public static int player1Layer4;
+	public static int bombLayer;
 	int floorLayer;
 	
 	Player player1 = new Player();
@@ -31,14 +32,15 @@ public class PlayState extends BasicGameState{
 	public void init(GameContainer gc, StateBasedGame sbg)throws SlickException {
 		//TiledMap setup initialization
 		map = new TiledMap("res/map.tmx");
-		boxLayer = map.getLayerIndex("Boxes");
-		wallLayer = map.getLayerIndex("Wall");
-		floorLayer = map.getLayerIndex("Floor");
+		boxLayer = map.getLayerIndex("BoxesLayer");
+		wallLayer = map.getLayerIndex("WallLayer");
+		floorLayer = map.getLayerIndex("FloorLayer");
 		fireLayer = map.getLayerIndex("FireLayer");
 		player1Layer1 = map.getLayerIndex("Player1Layer1");
 		player1Layer2 = map.getLayerIndex("Player1Layer2");
 		player1Layer3 = map.getLayerIndex("Player1Layer3");
 		player1Layer4 = map.getLayerIndex("Player1Layer4");
+		bombLayer = map.getLayerIndex("BombLayer");
 
 		
 		//Player data setup initialization
@@ -90,6 +92,10 @@ public class PlayState extends BasicGameState{
 						//Fire
 						if(map.getTileId(x, y, fireLayer) == 123){
 							map.render(x*32, y*32, 16, 0, 1, 1);
+						}
+						//Bomb
+						if(map.getTileId(x, y, bombLayer) == 25){
+							map.render(x*32, y*32, 15, 10, 1, 1);
 						}
 						//Player
 						if(map.getTileId(x, y, player1Layer1) != 241 && map.getTileId(x, y, player1Layer2) != 0){
