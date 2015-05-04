@@ -1,5 +1,5 @@
 package Core.Items;
-
+import Core.Player.Player;
 import Core.GameState.PlayState;
 
 public class Bombs {
@@ -8,43 +8,26 @@ public class Bombs {
 	public boolean hitWallLeft;
 	public boolean hitWallUp;
 	public boolean hitWallDown;
-<<<<<<< Updated upstream
-	public boolean isExploded = false;
-	int time = 0;
-	
-	public void timerBomb(int x, int y, int blastRadius){ //COUNTDOWN FOR BOMB EXPLOSION
-		int delta = getDelta();
-		time += delta; //add the time passed since last update()
-	    if(time > 3000){ //3 seconds = 3000 milliseconds
-	    	explodeBomb(x, y, blastRadius);
-	    	time = 0;
-	    } 
-	}
-=======
-	boolean isExploded = false;
-	int time = 3;
-	int delay = 3000;
-	int pastTime = 0;
-	long test = System.currentTimeMillis();
 	protected long timerStart = 0;
 	protected long timerDif = 0;
 	protected int timerAmount = 3000; // = 3 second
->>>>>>> Stashed changes
-	
+	public boolean isExploded = false;
+
 	public void timerBomb (int x, int y, int blastRadius){
-		if(isExploded == false){
-			isExploded = true;
+		if(timerStart == 0){
 			timerStart = System.currentTimeMillis();
-			explodeBomb(x,y,blastRadius);
-			}
-			else{
-			timerDif = System.currentTimeMillis();
-				if(timerDif > timerAmount){
+		}else{
+		  	timerDif = System.currentTimeMillis();
+				if(timerDif-timerStart > timerAmount){
+					explodeBomb (x,y,blastRadius);
 					timerStart = 0;
 					timerDif = 0;
-					isExploded = true;
-			}
-		}
+			  }
+		 }
+	}
+	
+	void update(int x, int y, int blastRadius){
+		timerBomb(x, y, blastRadius);
 	}
 
 	public void explodeBomb(int x, int y, int blastRadius){ //BOMB EXPLOSION
@@ -53,12 +36,8 @@ public class Bombs {
 			hitWallLeft = false;
 			hitWallUp = false;
 			hitWallDown = false;
-<<<<<<< Updated upstream
-			//Removes bomb
+			
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 26);
-=======
-	
->>>>>>> Stashed changes
 			
 			//Right
 			if (PlayState.map.getTileId(x + 1, y, PlayState.boxLayer) == 94) {
@@ -139,14 +118,13 @@ public class Bombs {
 			}*/
 
 	}
-	
+	/*
 	public void removeBomb(){
-<<<<<<< Updated upstream
 		//REMOVE BOMB AFTER EXPLOSION			
 			removeFire();
 		
-		}
-
+	}
+	
 	void removeFire(){
 		int delta = getDelta();
 		time += delta; //add the time passed since last update()
@@ -159,14 +137,9 @@ public class Bombs {
 					}
 				}
 	    	time = 0;
-	}
+	    }
 		
-=======
-		//REMOVE BOMB AFTER EXPLOSION
-			
->>>>>>> Stashed changes
 	}
+	*/
 		
-}
-
 }

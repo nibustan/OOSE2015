@@ -120,23 +120,12 @@ public class Player {
 
 	public void placeBomb(GameContainer gc)throws SlickException{
 		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
-<<<<<<< Updated upstream
 			if(bombsActive < bombAmount-1 && PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25){
 				bombsActive++;
 			bombs[bombsActive] = new Bombs();
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 25);
 			bombs[bombsActive].timerBomb(x, y, bombLength);			
-				}
 			}
-		
-=======
-			bombs[0] = new Bombs();
-			bombs[0].timerBomb(x, y, bombLength);
-			
-		}
->>>>>>> Stashed changes
+		}	
 	}
-	
-	
-	
-	}
+}
