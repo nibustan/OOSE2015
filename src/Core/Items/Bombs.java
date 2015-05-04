@@ -3,6 +3,7 @@ import Core.Player.Player;
 import Core.GameState.PlayState;
 //Sup
 public class Bombs {
+	public int x,y,blastRadius;
 
 	public boolean hitWallRight;
 	public boolean hitWallLeft;
@@ -13,27 +14,34 @@ public class Bombs {
 	protected int timerAmountBomb = 3000; // = 3 second
 	protected int timerAmountFire = 1000; // = 1 second
 	public boolean isExploded = false;
+	
+	public Bombs(int x, int y, int blastRadius) {
+		this.x = x;
+		this.y = y;
+		this.blastRadius = blastRadius;
+	}
 
-	public void timerBomb (int x, int y, int blastRadius){
-
+	public void timerBomb (){
+		
+		System.out.println("TEST");
+		
 		if(timerStart == 0){
 			timerStart = System.currentTimeMillis();
 		}else{
 		  	timerDif = System.currentTimeMillis();
+		  	
 				if(timerDif-timerStart > timerAmountBomb){
-
 					explodeBomb (x,y,blastRadius);
-
-					System.out.println("boom!");
+					
 					timerStart = 0;
 					timerDif = 0;
 				}
 			  }
 			}
 	
-	/*void update(int x, int y, int blastRadius){
-		timerBomb(x, y, blastRadius);
-	}*/
+	public void update(){
+		timerBomb();
+	}
 
 	public void explodeBomb(int x, int y, int blastRadius){ //BOMB EXPLOSION
 			

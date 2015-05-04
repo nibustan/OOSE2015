@@ -1,5 +1,4 @@
 package Core.Items;
-
 import java.util.Random;
 
 
@@ -7,8 +6,6 @@ import java.util.Random;
 
 public class Item {
 	
-	Random rand;
-
 	public static void main(String[] args) {
 		
 	//	Is the Item inside of a bombblast?
@@ -24,7 +21,7 @@ public class Item {
 	public void randomChance(int bombAmount){
 		int min = 0;
 		int max = 5;
-		rand = new Random();
+		Random rand = new Random();
 		int randomNum = rand.nextInt((max - min) + 1) + min;
 		if(randomNum == 1){
 			bombUp(bombAmount);

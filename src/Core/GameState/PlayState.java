@@ -168,9 +168,12 @@ public class PlayState extends BasicGameState{
 		
 		player1.movement(gc);
 		player1.placeBomb(gc);
+		player1.update(gc);
 		
 		player2.movement(gc);
 		player2.placeBomb(gc);
+		player2.update(gc);
+		
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_U)) {
 			if(player1.bombLength <4 ){

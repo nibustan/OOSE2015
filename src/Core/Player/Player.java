@@ -32,12 +32,15 @@ public class Player {
 	public void init()throws SlickException {
 	}
 
-	public void  update(GameContainer gc) throws SlickException {	
+	public void  update(GameContainer gc) throws SlickException {
 		//Bomb Update
-		for(int i = 0; i<=bombsActive; i++){
+		for(int i = 0; i<bombsActive; i++){
 			if(bombs[bombsActive].isExploded == true){
 				bombsActive--;
-			}	
+			} else {
+				bombs[bombsActive].update();
+			}
+			
 		}
 		
 		//Fire Update
@@ -122,9 +125,8 @@ public class Player {
 		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
 			if(bombsActive < bombAmount-1 && PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25){
 				bombsActive++;
-			bombs[bombsActive] = new Bombs();
+			bombs[bombsActive] = new Bombs(x,y,bombLength);
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 25);
-			bombs[bombsActive].timerBomb(x, y, bombLength);			
 			}
 		}	
 	}
