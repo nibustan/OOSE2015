@@ -21,9 +21,12 @@ public class Player {
 	public int y;
 	
 	//Player Attributes
+	
 	public int bombLength;
+
 	public int bombAmount = 4;
 	public int bombsActive = 0;
+
 	Bombs[] bombs = new Bombs[bombAmount];
 	
 	public void init()throws SlickException {

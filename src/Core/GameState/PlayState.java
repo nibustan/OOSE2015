@@ -14,13 +14,32 @@ public class PlayState extends BasicGameState{
 	public static TiledMap map;
 	public static int wallLayer;
 	public static int boxLayer;
+	int floorLayer;
+	
 	public static int fireLayer;
+	public static int fireLayerH;
+	public static int fireLayerV;
+	
 	public static int player1Layer1;
 	public static int player1Layer2;
 	public static int player1Layer3;
 	public static int player1Layer4;
+
 	public static int bombLayer;
-	int floorLayer;
+
+	public static int player2Layer1;
+	public static int player2Layer2;
+	public static int player2Layer3;
+	public static int player2Layer4;
+	
+	public static int bombUpLayer;
+	public static int bombDownLayer;
+	
+	public static int fireUpLayer;
+	public static int fireDownLayer;
+	
+	public static int powerBombLayer;
+	
 	
 	Player player1 = new Player();
 	Player player2 = new Player();
@@ -35,12 +54,35 @@ public class PlayState extends BasicGameState{
 		boxLayer = map.getLayerIndex("BoxesLayer");
 		wallLayer = map.getLayerIndex("WallLayer");
 		floorLayer = map.getLayerIndex("FloorLayer");
+		
+		boxLayer = map.getLayerIndex("Boxes");
+		wallLayer = map.getLayerIndex("Wall");
+		floorLayer = map.getLayerIndex("Floor");
+		
+		//Bomb and Fire sprites initialization
+		bombLayer = map.getLayerIndex("BombLayer");
 		fireLayer = map.getLayerIndex("FireLayer");
+		fireLayerH = map.getLayerIndex("FireLayerH");
+		fireLayerV = map.getLayerIndex("FireLayerV");
+		
+		//Player1 Sprites initialization
 		player1Layer1 = map.getLayerIndex("Player1Layer1");
 		player1Layer2 = map.getLayerIndex("Player1Layer2");
 		player1Layer3 = map.getLayerIndex("Player1Layer3");
 		player1Layer4 = map.getLayerIndex("Player1Layer4");
-		bombLayer = map.getLayerIndex("BombLayer");
+		
+		//Player2 Sprites initialization
+		player2Layer1 = map.getLayerIndex("Player2Layer1");
+		player2Layer2 = map.getLayerIndex("Player2Layer2");
+		player2Layer3 = map.getLayerIndex("Player2Layer3");
+		player2Layer4 = map.getLayerIndex("Player2Layer4");
+		
+		//Item sprites initialization
+		bombUpLayer = map.getLayerIndex("BombUp");
+		bombDownLayer = map.getLayerIndex("BombDown");
+		fireUpLayer = map.getLayerIndex("FireUp");
+		fireDownLayer = map.getLayerIndex("FireDown");
+		powerBombLayer = map.getLayerIndex("PowerBomb");
 
 		
 		//Player data setup initialization
@@ -64,11 +106,11 @@ public class PlayState extends BasicGameState{
 		
 		player2.bombLength = 1;
 		
-		player2.bombButton = "KEY_NUMPAD0";
-		player2.right = "KEY_NUMPAD6";
-		player2.left = "KEY_NUMPAD4";
-		player2.up = "KEY_NUMPAD8";
-		player2.down = "KEY_NUMPAD2";
+		player2.bombButton = "KEY_O";
+		player2.right = "KEY_L";
+		player2.left = "KEY_J";
+		player2.up = "KEY_I";
+		player2.down = "KEY_K";
 	}
 
 	@Override
@@ -97,7 +139,11 @@ public class PlayState extends BasicGameState{
 						if(map.getTileId(x, y, bombLayer) == 25){
 							map.render(x*32, y*32, 15, 10, 1, 1);
 						}
+						
 						//Player
+
+						//Player1
+
 						if(map.getTileId(x, y, player1Layer1) != 241 && map.getTileId(x, y, player1Layer2) != 0){
 							map.render(x*32, y*32, 15, 3, 1, 1);
 						}
@@ -110,6 +156,7 @@ public class PlayState extends BasicGameState{
 						if(map.getTileId(x, y, player1Layer4) != 244 && map.getTileId(x, y, player1Layer4 ) != 0){
 							map.render(x*32, y*32, 15, 9, 1, 1);
 						}
+					
 					}			
 				}
 	}

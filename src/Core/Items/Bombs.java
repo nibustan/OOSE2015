@@ -118,7 +118,15 @@ public class Bombs {
 			else if(map.getTileId(x, y - 4, boxLayer) == 94 && blastRadius == 4){
 				map.setTileId(x, y - 4, boxLayer, 0);
 			}*/
-			
+
+		isExploded = true;
+		if(isExploded = true)
+			removeBomb();
+			isExploded = false;
+	}
+	
+	public void removeBomb(){
+		//REMOVE BOMB AFTER EXPLOSION			
 			removeFire();
 		
 		}
