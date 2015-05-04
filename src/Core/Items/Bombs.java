@@ -1,7 +1,7 @@
 package Core.Items;
 import Core.Player.Player;
 import Core.GameState.PlayState;
-
+//Sup
 public class Bombs {
 
 	public boolean hitWallRight;
