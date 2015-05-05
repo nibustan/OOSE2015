@@ -89,12 +89,6 @@ public class PlayState extends BasicGameState{
 		
 		player1.bombLength = 1;
 		
-		player1.bombButton = "KEY_ENTER";
-		player1.right = "KEY_D";
-		player1.left = "KEY_A";
-		player1.up = "KEY_W";
-		player1.down = "KEY_S";
-		
 		//Player 2
 		player2.x = 13;
 		player2.y = 11;
@@ -102,11 +96,6 @@ public class PlayState extends BasicGameState{
 		
 		player2.bombLength = 1;
 		
-		player2.bombButton = "KEY_O";
-		player2.right = "KEY_L";
-		player2.left = "KEY_J";
-		player2.up = "KEY_I";
-		player2.down = "KEY_K";
 	}
 
 	@Override
@@ -189,11 +178,11 @@ public class PlayState extends BasicGameState{
 			}
 		}
 		
-		/*if (gc.getInput().isKeyPressed(Input.KEY_Y)) {
+		if (gc.getInput().isKeyPressed(Input.KEY_Y)) {
 			if(player2.bombLength <4 ){
 			player2.bombLength++;
 			}
-		}*/
+		}
 		
 	}
 

@@ -112,10 +112,10 @@ public class Bombs {
 			}
 			//If no boxes within blast radius range
 			for(int r = 1; r<=blastRadius; r++){
-				if(PlayState.map.getTileId(x + r, y, PlayState.boxLayer) != 0){
+				if(PlayState.map.getTileId(x + r, y, PlayState.boxLayer) != 0 && hitBoxRight1 != true){
 					hitBoxRight1 = true;
 				}
-				if(PlayState.map.getTileId(x + r, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x + r, y, PlayState.wallLayer ) == 98){
+				if(PlayState.map.getTileId(x + r, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x + r, y, PlayState.wallLayer ) == 98 && hitWallRight != true){
 					hitWallRight = true;
 				}
 				if(hitWallRight != true && hitBoxRight1 != true){
@@ -165,10 +165,11 @@ public class Bombs {
 			}
 			//If no boxes within blast radius range
 			for(int r = 1; r<=blastRadius; r++){
-				if(PlayState.map.getTileId(x - r, y, PlayState.boxLayer) != 0){
+				if(PlayState.map.getTileId(x - r, y, PlayState.boxLayer) != 0 && hitBoxLeft1 != true){
 					hitBoxLeft1 = true;
 				}
-				if(PlayState.map.getTileId(x - r, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x - r, y, PlayState.wallLayer ) == 98){
+				if(PlayState.map.getTileId(x - r, y, PlayState.wallLayer) == 18 && hitWallLeft != true || PlayState.map.getTileId(x - r, y, PlayState.wallLayer ) == 98
+						&& hitWallLeft != true){
 					hitWallLeft = true;
 				}
 				if(hitWallLeft != true && hitBoxLeft1 != true){
@@ -218,13 +219,13 @@ public class Bombs {
 			}
 			//If no boxes within blast radius range
 			for(int r = 1; r<=blastRadius; r++){
-				if(PlayState.map.getTileId(x, y + r, PlayState.boxLayer) != 0){
+				if(PlayState.map.getTileId(x, y + r, PlayState.boxLayer) != 0 && hitBoxDown1 != true){
 					hitBoxDown1 = true;
 				}
-				if(PlayState.map.getTileId(x, y + r, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + r, PlayState.wallLayer ) == 98){
+				if(PlayState.map.getTileId(x, y + r, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + r, PlayState.wallLayer ) == 98 && hitWallDown != true){
 					hitWallDown = true;
 				}
-				if(hitWallDown != true && hitBoxDown != true){
+				if(hitWallDown != true && hitBoxDown1 != true){
 					PlayState.map.setTileId(x, y + r, PlayState.fireLayerV, 143);
 				}
 			}
@@ -270,10 +271,10 @@ public class Bombs {
 			}
 			//If no boxes within blast radius range
 			for(int r = 1; r<=blastRadius; r++){
-				if(PlayState.map.getTileId(x, y - r, PlayState.boxLayer) != 0){
+				if(PlayState.map.getTileId(x, y - r, PlayState.boxLayer) != 0 && hitBoxUp1 != true){
 					hitBoxUp1 = true;
 				}
-				if(PlayState.map.getTileId(x, y - r, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y - r, PlayState.wallLayer ) == 98){
+				if(PlayState.map.getTileId(x, y - r, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y - r, PlayState.wallLayer ) == 98 && hitWallUp != true){
 					hitWallUp = true;
 				}
 				if(hitWallUp != true && hitBoxUp1 != true){

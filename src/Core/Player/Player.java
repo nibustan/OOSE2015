@@ -10,14 +10,7 @@ import Core.GameState.PlayState;
 import Core.Items.Bombs;
 
 public class Player {
-	
-	//Key bindings
-	public String right;
-	public String left;
-	public String up;
-	public String down;
-	public String bombButton;
-	
+		
 	//Vector
 	public int x;
 	public int y;
@@ -28,7 +21,6 @@ public class Player {
 	public int bombsActive = 0;
 	
 	ArrayList<Bombs> bombs = new ArrayList<Bombs>();
-	//Bombs[] bombs = new Bombs[bombAmount];
 	
 	public void init()throws SlickException {
 	}
