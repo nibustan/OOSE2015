@@ -217,7 +217,7 @@ public class Player {
 				}
 			}
 		}
-		if (inControl == 2) {
+		if (inControl == 1) {
 			if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
 				if (bombs2.size() < 3
 						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {

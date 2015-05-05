@@ -35,11 +35,6 @@
    H4sIAAAAAAAAC2NgoB3gJAMTay459Kh7R9076l7S3UsLAACVWmTReAQAAA==
   </data>
  </layer>
- <layer name="FireLayer" width="22" height="13" visible="0">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoB3gIgMTay459Kh7R9076l7S3UsLAADcAg8CeAQAAA==
-  </data>
- </layer>
  <layer name="FireLayerH" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB3gJgMPJBh1L23BqHtpC4aSewHJRbCoeAQAAA==
@@ -48,6 +43,11 @@
  <layer name="FireLayerV" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB3gIZMeNXfU3FFzB4+5tAAAID4QWngEAAA=
+  </data>
+ </layer>
+ <layer name="FireLayer" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB3gIgMTay459Kh7R9076l7S3UsLAADcAg8CeAQAAA==
   </data>
  </layer>
  <layer name="BombUp" width="22" height="13" visible="0">
@@ -80,32 +80,32 @@
    H4sIAAAAAAAAC2NgoB1gJAMTay459Kh7R9076l7S3UsLAABu7j7KeAQAAA==
   </data>
  </layer>
- <layer name="Player1Layer2" width="22" height="13">
+ <layer name="Player1Layer2" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB1gIgMTay459Kh7R9076l7S3UsLAAAntlUZeAQAAA==
   </data>
  </layer>
- <layer name="Player1Layer3" width="22" height="13">
+ <layer name="Player1Layer3" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB1gJgMTay459Kh7R9076l7S3UsLAADggYxXeAQAAA==
   </data>
  </layer>
- <layer name="Player1Layer4" width="22" height="13">
+ <layer name="Player1Layer4" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB1gIQMTay459Kh7R9076l7S3UsLAAD0APJkeAQAAA==
   </data>
  </layer>
- <layer name="Player2Layer1" width="22" height="13">
+ <layer name="Player2Layer1" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB1gJQMTay459Kh7R9076l7S3UsLAAAzNysqeAQAAA==
   </data>
  </layer>
- <layer name="Player2Layer2" width="22" height="13">
+ <layer name="Player2Layer2" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB1gIwMTay459Kh7R9076l7S3UsLAAB6b0D5eAQAAA==
   </data>
  </layer>
- <layer name="Player2Layer3" width="22" height="13">
+ <layer name="Player2Layer3" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB1gJwMTay459Kh7R907WNyLrH6wu5cWAAAPB5KweAQAAA==
   </data>

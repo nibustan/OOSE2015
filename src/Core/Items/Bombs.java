@@ -53,6 +53,7 @@ public class Bombs {
 		}
 		if (PlayState.map.getTileId(x, y, PlayState.fireLayerH) == 133 || PlayState.map.getTileId(x, y, PlayState.fireLayerV) == 143) {
 			explodeBomb();
+			PlayState.map.setTileId(x , y, PlayState.fireLayer, 123);
 		}
 	}
 	
@@ -157,7 +158,7 @@ public class Bombs {
 			
 			//Right bomb check
 			if(PlayState.map.getTileId(x + 1, y, PlayState.bombLayer) == 1){
-				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
+				PlayState.map.setTileId(x + 1, y, PlayState.fireLayer, 123);
 			}
 			
 			//Left
@@ -240,7 +241,7 @@ public class Bombs {
 
 			//Left bomb check
 			if(PlayState.map.getTileId(x - 1, y, PlayState.bombLayer) == 1){
-				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
+				PlayState.map.setTileId(x - 1, y, PlayState.fireLayer, 123);
 			}
 
 			
@@ -324,7 +325,7 @@ public class Bombs {
 			
 			//Down bomb check
 			if(PlayState.map.getTileId(x , y + 1, PlayState.bombLayer) == 1){
-				PlayState.map.setTileId(x , y + 1, PlayState.fireLayerV, 143);
+				PlayState.map.setTileId(x , y + 1, PlayState.fireLayer, 123);
 			}
 			
 			//Up
@@ -407,7 +408,7 @@ public class Bombs {
 			
 			//Up bomb check
 			if(PlayState.map.getTileId(x , y - 1, PlayState.bombLayer) == 1){
-				PlayState.map.setTileId(x , y - 1, PlayState.fireLayerV, 143);
+				PlayState.map.setTileId(x , y - 1, PlayState.fireLayer, 123);
 			}
 			
 			if(fireStart == true){
