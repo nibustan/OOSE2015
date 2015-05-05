@@ -129,7 +129,7 @@ public class Player {
 		//player2
 		if(inControl == 2){
 			//Move player2 right
-			if (gc.getInput().isKeyPressed(Input.KEY_L)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_NUMPAD6)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer2, 6);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer3, 7);
@@ -147,7 +147,7 @@ public class Player {
 			}
 
 			// Move Player2 Left
-			if (gc.getInput().isKeyPressed(Input.KEY_J)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_NUMPAD4)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer2, 6);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer3, 7);
@@ -165,7 +165,7 @@ public class Player {
 			}
 			
 			// Move Player2 Up
-			if (gc.getInput().isKeyPressed(Input.KEY_I)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_NUMPAD8)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer2, 6);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer3, 7);
@@ -183,7 +183,7 @@ public class Player {
 			}
 
 			// Move Player2 Down
-			if (gc.getInput().isKeyPressed(Input.KEY_K)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_NUMPAD5)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer2, 6);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer3, 7);
@@ -207,7 +207,7 @@ public class Player {
 
 	public void placeBomb(GameContainer gc)throws SlickException{
 		if (inControl == 1) {
-			if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
 				if (bombs.size() < 3
 						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {
 					bombs.add(new Bombs(x, y, bombLength));
@@ -218,7 +218,7 @@ public class Player {
 			}
 		}
 		if (inControl == 2) {
-			if (gc.getInput().isKeyPressed(Input.KEY_P)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
 				if (bombs2.size() < 3
 						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {
 					bombs2.add(new Bombs(x, y, bombLength));
