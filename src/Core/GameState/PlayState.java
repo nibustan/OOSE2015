@@ -41,8 +41,8 @@ public class PlayState extends BasicGameState{
 	public static int powerBombLayer;
 	
 	
-	Player player1 = new Player();
-	Player player2 = new Player();
+	Player player1 = new Player(1);
+	Player player2 = new Player(2);
 	
 	public PlayState(int state){
 	}
@@ -92,7 +92,7 @@ public class PlayState extends BasicGameState{
 		//Player 2
 		player2.x = 13;
 		player2.y = 11;
-		PlayState.map.setTileId(player2.x, player2.y, PlayState.player1Layer4, 1);
+		PlayState.map.setTileId(player2.x, player2.y, PlayState.player2Layer4, 5);
 		
 		player2.bombLength = 1;
 		
@@ -149,7 +149,19 @@ public class PlayState extends BasicGameState{
 							map.render(x*32, y*32, 15, 8, 1, 1);
 						}
 						
-						//Player
+						//Player2
+						if(map.getTileId(x, y, player2Layer1) != 5 && map.getTileId(x, y, player2Layer2) != 0){
+							map.render(x*32, y*32, 15, 3, 1, 1);
+						}
+						if(map.getTileId(x, y, player2Layer2) != 6 && map.getTileId(x, y, player2Layer2) != 0){
+							map.render(x*32, y*32, 15, 5, 1, 1);
+						}
+						if(map.getTileId(x, y, player2Layer3) != 7 && map.getTileId(x, y, player2Layer3) != 0){
+							map.render(x*32, y*32, 15, 7, 1, 1);
+						}
+						if(map.getTileId(x, y, player2Layer4) != 8 && map.getTileId(x, y, player2Layer4 ) != 0){
+							map.render(x*32, y*32, 15, 9, 1, 1);
+						}
 					
 					}			
 				}
