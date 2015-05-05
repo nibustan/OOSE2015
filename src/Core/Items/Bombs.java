@@ -87,7 +87,6 @@ public class Bombs {
 				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
 				hitBoxRight = true;
 				//itemDrop();
-
 			}
 			else if(PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x + 1, y, PlayState.wallLayer ) == 98){
 				hitWallRight = true;
@@ -134,12 +133,17 @@ public class Bombs {
 				}
 			}
 			
+			//Right bomb check
+			if(PlayState.map.getTileId(x + 1, y, PlayState.bombLayer) == 1){
+				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
+			}
+			
 			//Left
 			if (PlayState.map.getTileId(x - 1, y, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x - 1, y, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 				hitBoxLeft = true;
-				//itemDrop();				
+				//itemDrop();	
 			}
 			else if(PlayState.map.getTileId(x - 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x - 1, y, PlayState.wallLayer ) == 98){
 				hitWallLeft = true;
@@ -223,6 +227,10 @@ public class Bombs {
 					PlayState.map.setTileId(x - r, y, PlayState.fireLayerH, 133);
 				}
 			}*/
+			//Left bomb check
+			if(PlayState.map.getTileId(x - 1, y, PlayState.bombLayer) == 1){
+				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
+			}
 			
 			//Down
 			if (PlayState.map.getTileId(x, y + 1, PlayState.boxLayer) == 111) {
@@ -230,7 +238,6 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 				hitBoxDown = true;
 				//itemDrop();
-
 			}
 			else if(PlayState.map.getTileId(x, y + 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + 1, PlayState.wallLayer ) == 98){
 				hitWallDown = true;
@@ -275,6 +282,10 @@ public class Bombs {
 				if(hitWallDown != true && hitBoxDown1 != true){
 					PlayState.map.setTileId(x, y + r, PlayState.fireLayerV, 143);
 				}
+			}
+			//Down bomb check
+			if(PlayState.map.getTileId(x , y + 1, PlayState.bombLayer) == 1){
+				PlayState.map.setTileId(x , y + 1, PlayState.fireLayerV, 143);
 			}
 			
 			//Up
@@ -328,6 +339,11 @@ public class Bombs {
 					PlayState.map.setTileId(x, y - r, PlayState.fireLayerV, 143);
 				}
 			}
+			//Up bomb check
+			if(PlayState.map.getTileId(x , y - 1, PlayState.bombLayer) == 1){
+				PlayState.map.setTileId(x , y - 1, PlayState.fireLayerV, 143);
+			}
+			
 			
 			if(fireStart == true){
 				fireStart = false;
