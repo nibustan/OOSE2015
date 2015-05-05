@@ -75,7 +75,8 @@ public class Bombs {
 				PlayState.map.setTileId(x + 1, y, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
 				hitBoxRight = true;
-				//RandomDrop();
+				//itemDrop();
+
 			}
 			else if(PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x + 1, y, PlayState.wallLayer ) == 98){
 				hitWallRight = true;
@@ -127,7 +128,8 @@ public class Bombs {
 				PlayState.map.setTileId(x - 1, y, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 				hitBoxLeft = true;
-				//randomDrop();
+				//itemDrop();
+				
 			}
 			else if(PlayState.map.getTileId(x - 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x - 1, y, PlayState.wallLayer ) == 98){
 				hitWallLeft = true;
@@ -179,7 +181,8 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 1, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 				hitBoxDown = true;
-				//randomDrop();
+				//itemDrop();
+
 			}
 			else if(PlayState.map.getTileId(x, y + 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + 1, PlayState.wallLayer ) == 98){
 				hitWallDown = true;
@@ -231,7 +234,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y - 1, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
 				hitBoxUp = true;
-				//randomDrop();
+				//itemDrop();
 			}
 			else if(PlayState.map.getTileId(x, y - 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y - 1, PlayState.wallLayer ) == 98){
 				hitWallUp = true;
