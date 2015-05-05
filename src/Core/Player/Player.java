@@ -25,8 +25,6 @@ public class Player {
 	//Player Attributes
 	
 	public int bombLength;
-
-	public int bombAmount = 4;
 	public int bombsActive = 0;
 	
 	ArrayList<Bombs> bombs = new ArrayList<Bombs>();
@@ -36,18 +34,15 @@ public class Player {
 	}
 
 	public void update(GameContainer gc) throws SlickException {
-		//Bomb Update
+		//Bombs Update
 		for(int i = 0; i<=bombs.size()-1; i++){
 			if(bombs.get(i).isExploded == true){
 				bombs.remove(i);
+				bombsActive--;
 			} else {
 				bombs.get(i).update();
-				
 			}
-			
 		}
-		
-		//Fire Update
 		
 	}
 
@@ -131,6 +126,7 @@ public class Player {
 			bombs.add(new Bombs(x,y,bombLength));
 			bombs.get(bombs.size()-1).init();
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 25);
+			bombsActive++;
 			}
 		}	
 	}

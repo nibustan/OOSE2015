@@ -189,11 +189,11 @@ public class PlayState extends BasicGameState{
 			}
 		}
 		
-		if (gc.getInput().isKeyPressed(Input.KEY_Y)) {
+		/*if (gc.getInput().isKeyPressed(Input.KEY_Y)) {
 			if(player2.bombLength <4 ){
 			player2.bombLength++;
 			}
-		}
+		}*/
 		
 	}
 
