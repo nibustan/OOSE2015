@@ -139,7 +139,7 @@ public class Bombs {
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
 				hitBoxLeft = true;
-				//RandomDrop();
+				//itemDrop();
 			}
 			else if(PlayState.map.getTileId(x - 2, y, PlayState.wallLayer) == 98){
 				hitWallLeft = true;
@@ -150,7 +150,7 @@ public class Bombs {
 				PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 3, y, PlayState.fireLayerH, 133);
 				hitBoxLeft = true;
-				//RandomDrop();
+				//itemDrop();
 			}
 			else if(PlayState.map.getTileId(x - 3, y, PlayState.wallLayer) == 98){
 				hitWallLeft = true;
@@ -161,7 +161,7 @@ public class Bombs {
 				PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 3, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 4, y, PlayState.fireLayerH, 133);
-				//RandomDrop();
+				//itemDrop();
 			}
 			//If no boxes within blast radius range
 			for(int r = 1; r<=blastRadius; r++){
@@ -192,7 +192,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 				hitBoxDown = true;
-				//RandomDrop();
+				//itemDrop();
 			}
 			else if(PlayState.map.getTileId(x, y + 2, PlayState.wallLayer) == 98){
 				hitWallDown = true;
@@ -203,7 +203,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
 				hitBoxDown = true;
-				//RandomDrop();
+				//itemDrop();
 			}
 			else if(PlayState.map.getTileId(x, y + 3, PlayState.wallLayer) == 98){
 				hitWallDown = true;
@@ -214,7 +214,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y + 4, PlayState.fireLayerV, 143);
-				//RandomDrop();
+				//itemDrop();
 			}
 			//If no boxes within blast radius range
 			for(int r = 1; r<=blastRadius; r++){

@@ -26,7 +26,7 @@ public class Item {
 	}
 	
 	public void update(){
-		randomDrop();
+		itemDrop();
 	}
 	
 	// 25% chance of an item spawning.
@@ -41,7 +41,7 @@ public class Item {
 	}
 	
 	public void randomDrop(){
-		int min = 0;
+		int min = 1;
 		int max = 5;
 		Random rand = new Random();
 		int randomNum = rand.nextInt((max-min)+1)+min;
