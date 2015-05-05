@@ -171,7 +171,7 @@ public class PlayState extends BasicGameState{
 	public void update(GameContainer gc, StateBasedGame sbg, int i)throws SlickException {
 
 		//Change State
-		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
+		if(gc.getInput().isKeyPressed(Input.KEY_Z)){
 			sbg.enterState(2);
 		}
 		
