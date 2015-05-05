@@ -19,7 +19,7 @@ public class Item {
 	//boolean pickedUp = false;
 	}
 	
-	public void Items(int x, int y, int bombAmount) {
+	public Item(int x, int y, int bombAmount) {
 		this.x = x;
 		this.y = y;
 		this.bombAmount = bombAmount;
