@@ -11,14 +11,14 @@ public class Bombs {
 	public boolean hitWallLeft;
 	public boolean hitWallUp;
 	public boolean hitWallDown;
+	public boolean hitWallRight1;
+	public boolean hitWallLeft1;
+	public boolean hitWallUp1;
+	public boolean hitWallDown1;	
 	public boolean hitBoxRight;
 	public boolean hitBoxLeft;
 	public boolean hitBoxUp;
 	public boolean hitBoxDown;
-	public boolean hitBoxRight1;
-	public boolean hitBoxLeft1;
-	public boolean hitBoxUp1;
-	public boolean hitBoxDown1;	
 	
 	//Time
 	protected long timerStart = 0;
@@ -75,6 +75,11 @@ public class Bombs {
 	
 	public void explodeBomb(){ //BOMB EXPLOSION
 			
+		hitWallRight = false;
+		hitWallLeft = false;
+		hitWallUp = false;
+		hitWallDown = false;
+		
 			//Removes Bomb
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 26);
 			
@@ -120,17 +125,44 @@ public class Bombs {
 				PlayState.map.setTileId(x + 4, y, PlayState.fireLayerH, 133);
 				//itemDrop();
 			}
+			
 			//If no boxes within blast radius range
-			for(int r = 1; r<=blastRadius; r++){
-				if(PlayState.map.getTileId(x + r, y, PlayState.boxLayer) != 0 && hitBoxRight1 != true){
-					hitBoxRight1 = true;
-				}
-				if(PlayState.map.getTileId(x + r, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x + r, y, PlayState.wallLayer ) == 98 && hitWallRight != true){
-					hitWallRight = true;
-				}
-				if(hitWallRight != true && hitBoxRight1 != true){
-					PlayState.map.setTileId(x + r, y, PlayState.fireLayerH, 133);
-				}
+			if(PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x + 1, y, PlayState.wallLayer ) == 98){
+				hitWallRight1 = true;
+			}
+			if (PlayState.map.getTileId(x + 1, y, PlayState.boxLayer) == 0 && hitWallRight1 != true) {
+				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
+				//itemDrop();
+				if(PlayState.map.getTileId(x + 2, y, PlayState.wallLayer) == 98){
+					hitWallRight1 = true;
+					}
+				
+				if(PlayState.map.getTileId(x + 2, y, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallRight1 != true){
+					PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
+					PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);	
+					//itemDrop();
+					if(PlayState.map.getTileId(x + 3, y, PlayState.wallLayer) == 98){
+						hitWallRight1 = true;
+						}
+					
+					if(PlayState.map.getTileId(x + 3, y, PlayState.boxLayer) == 0 && blastRadius >= 3 && hitWallRight1 != true){
+						PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
+						PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);
+						PlayState.map.setTileId(x + 3, y, PlayState.fireLayerH, 133);
+						//itemDrop();							
+						if(PlayState.map.getTileId(x + 4, y, PlayState.wallLayer) == 98){
+							hitWallRight1 = true;
+							}
+					
+						if(PlayState.map.getTileId(x + 4, y, PlayState.boxLayer) == 0 && blastRadius == 4 && hitWallRight1 != true){
+							PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
+							PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);
+							PlayState.map.setTileId(x + 3, y, PlayState.fireLayerH, 133);
+							PlayState.map.setTileId(x + 4, y, PlayState.fireLayerH, 133);
+							//itemDrop();
+							}
+					}
+				}	
 			}
 			
 			//Right bomb check
@@ -177,17 +209,45 @@ public class Bombs {
 				PlayState.map.setTileId(x - 4, y, PlayState.fireLayerH, 133);
 				//itemDrop();
 			}
-			
 			//If no boxes within blast radius range
-			
 			if(PlayState.map.getTileId(x - 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x - 1, y, PlayState.wallLayer ) == 98){
-				hitWallLeft = true;
+				hitWallLeft1 = true;
 			}
-			else if (PlayState.map.getTileId(x - 1, y, PlayState.boxLayer) == 0 && hitWallLeft != true) {
+			if (PlayState.map.getTileId(x - 1, y, PlayState.boxLayer) == 0 && hitWallLeft1 != true) {
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
-				hitBoxLeft = true;
 				//itemDrop();
+				if(PlayState.map.getTileId(x - 2, y, PlayState.wallLayer) == 98){
+					hitWallLeft1 = true;
+					}
+				
+				if(PlayState.map.getTileId(x - 2, y, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallLeft1 != true){
+					PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
+					PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);	
+					//itemDrop();
+					if(PlayState.map.getTileId(x - 3, y, PlayState.wallLayer) == 98){
+						hitWallLeft1 = true;
+						}
+					
+					if(PlayState.map.getTileId(x - 3, y, PlayState.boxLayer) == 0 && blastRadius >= 3 && hitWallLeft1 != true){
+						PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
+						PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
+						PlayState.map.setTileId(x - 3, y, PlayState.fireLayerH, 133);
+						//itemDrop();							
+						if(PlayState.map.getTileId(x - 4, y, PlayState.wallLayer) == 98){
+							hitWallLeft1 = true;
+							}
+					
+						if(PlayState.map.getTileId(x - 4, y, PlayState.boxLayer) == 0 && blastRadius == 4 && hitWallLeft1 != true){
+							PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
+							PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
+							PlayState.map.setTileId(x - 3, y, PlayState.fireLayerH, 133);
+							PlayState.map.setTileId(x - 4, y, PlayState.fireLayerH, 133);
+							//itemDrop();
+							}
+					}
+				}	
 			}
+
 			else if(PlayState.map.getTileId(x - 2, y, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallLeft != true && hitBoxLeft != true){
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
@@ -231,6 +291,7 @@ public class Bombs {
 			if(PlayState.map.getTileId(x - 1, y, PlayState.bombLayer) == 1){
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 			}
+
 			
 			//Down
 			if (PlayState.map.getTileId(x, y + 1, PlayState.boxLayer) == 111) {
@@ -271,17 +332,52 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 4, PlayState.fireLayerV, 143);
 				//itemDrop();
 			}
-			//If no boxes within blast radius range
-			for(int r = 1; r<=blastRadius; r++){
-				if(PlayState.map.getTileId(x, y + r, PlayState.boxLayer) != 0 && hitBoxDown1 != true){
-					hitBoxDown1 = true;
-				}
-				if(PlayState.map.getTileId(x, y + r, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + r, PlayState.wallLayer ) == 98 && hitWallDown != true){
-					hitWallDown = true;
-				}
-				if(hitWallDown != true && hitBoxDown1 != true){
-					PlayState.map.setTileId(x, y + r, PlayState.fireLayerV, 143);
-				}
+			//If no boxes within blast radius range		
+			if(PlayState.map.getTileId(x, y + 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + 1, PlayState.wallLayer ) == 98){
+				hitWallDown1 = true;
+				System.out.println("1");
+			}
+			if (PlayState.map.getTileId(x, y + 1, PlayState.boxLayer) == 0 && hitWallDown1 != true) {
+				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
+				//itemDrop();
+				System.out.println("2");
+				if(PlayState.map.getTileId(x, y + 2, PlayState.wallLayer) == 98){
+					hitWallDown1 = true;
+					System.out.println("3");
+					}
+				
+				if(PlayState.map.getTileId(x, y + 2, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallDown1 != true){
+					PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
+					PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
+					System.out.println("4");	
+					//itemDrop();
+					if(PlayState.map.getTileId(x, y + 3, PlayState.wallLayer) == 98){
+						hitWallDown1 = true;
+						System.out.println("5");							
+						}
+					
+					if(PlayState.map.getTileId(x, y + 3, PlayState.boxLayer) == 0 && blastRadius >= 3 && hitWallDown1 != true){
+						PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
+						PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
+						PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
+						System.out.println("6");
+						//itemDrop();							
+						if(PlayState.map.getTileId(x, y + 4, PlayState.wallLayer) == 98){
+							hitWallDown1 = true;
+							System.out.println("7");						
+							}
+					
+						if(PlayState.map.getTileId(x, y + 4, PlayState.boxLayer) == 0 && blastRadius == 4 && hitWallDown1 != true){
+							PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
+							PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
+							PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
+							PlayState.map.setTileId(x, y + 4, PlayState.fireLayerV, 143);
+							System.out.println("8");
+							//itemDrop();
+							}
+					}
+				}	
+
 			}
 			//Down bomb check
 			if(PlayState.map.getTileId(x , y + 1, PlayState.bombLayer) == 1){
@@ -328,16 +424,50 @@ public class Bombs {
 				//itemDrop();
 			}
 			//If no boxes within blast radius range
-			for(int r = 1; r<=blastRadius; r++){
-				if(PlayState.map.getTileId(x, y - r, PlayState.boxLayer) != 0 && hitBoxUp1 != true){
-					hitBoxUp1 = true;
-				}
-				if(PlayState.map.getTileId(x, y - r, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y - r, PlayState.wallLayer ) == 98 && hitWallUp != true){
-					hitWallUp = true;
-				}
-				if(hitWallUp != true && hitBoxUp1 != true){
-					PlayState.map.setTileId(x, y - r, PlayState.fireLayerV, 143);
-				}
+			if(PlayState.map.getTileId(x, y - 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y - 1, PlayState.wallLayer ) == 98){
+				hitWallUp1 = true;
+				System.out.println("1");
+			}
+			if (PlayState.map.getTileId(x, y - 1, PlayState.boxLayer) == 0 && hitWallUp1 != true) {
+				PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
+				//itemDrop();
+				System.out.println("2");
+				if(PlayState.map.getTileId(x, y - 2, PlayState.wallLayer) == 98){
+					hitWallUp1 = true;
+					System.out.println("3");
+					}
+				
+				if(PlayState.map.getTileId(x, y - 2, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallUp1 != true){
+					PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
+					PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
+					System.out.println("4");	
+					//itemDrop();
+					if(PlayState.map.getTileId(x, y - 3, PlayState.wallLayer) == 98){
+						hitWallUp1 = true;
+						System.out.println("5");							
+						}
+					
+					if(PlayState.map.getTileId(x, y - 3, PlayState.boxLayer) == 0 && blastRadius >= 3 && hitWallUp1 != true){
+						PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
+						PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
+						PlayState.map.setTileId(x, y - 3, PlayState.fireLayerV, 143);
+						System.out.println("6");
+						//itemDrop();							
+						if(PlayState.map.getTileId(x, y - 4, PlayState.wallLayer) == 98){
+							hitWallUp1 = true;
+							System.out.println("7");						
+							}
+					
+						if(PlayState.map.getTileId(x, y - 4, PlayState.boxLayer) == 0 && blastRadius == 4 && hitWallUp1 != true){
+							PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
+							PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
+							PlayState.map.setTileId(x, y - 3, PlayState.fireLayerV, 143);
+							PlayState.map.setTileId(x, y - 4, PlayState.fireLayerV, 143);
+							System.out.println("8");
+							//itemDrop();
+							}
+					}
+				}	
 			}
 			//Up bomb check
 			if(PlayState.map.getTileId(x , y - 1, PlayState.bombLayer) == 1){
