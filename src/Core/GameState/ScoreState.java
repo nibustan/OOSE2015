@@ -27,7 +27,7 @@ public class ScoreState extends BasicGameState{
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int i)throws SlickException {
-		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
+		if(gc.getInput().isKeyPressed(Input.KEY_Z)){
 			sbg.enterState(0);
 		}
 	}
