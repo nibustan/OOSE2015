@@ -276,36 +276,29 @@ public class Bombs {
 			//If no boxes within blast radius range
 			if(PlayState.map.getTileId(x, y + 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + 1, PlayState.wallLayer ) == 98){
 				hitWallDown1 = true;
-				System.out.println("1");
 			}
 			if (PlayState.map.getTileId(x, y + 1, PlayState.boxLayer) == 0 && hitWallDown1 != true) {
 				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 				//itemDrop();
-				System.out.println("2");
 				if(PlayState.map.getTileId(x, y + 2, PlayState.wallLayer) == 98){
 					hitWallDown1 = true;
-					System.out.println("3");
 					}
 				
 				if(PlayState.map.getTileId(x, y + 2, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallDown1 != true){
 					PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 					PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
-					System.out.println("4");	
 					//itemDrop();
 					if(PlayState.map.getTileId(x, y + 3, PlayState.wallLayer) == 98){
-						hitWallDown1 = true;
-						System.out.println("5");							
+						hitWallDown1 = true;							
 						}
 					
 					if(PlayState.map.getTileId(x, y + 3, PlayState.boxLayer) == 0 && blastRadius >= 3 && hitWallDown1 != true){
 						PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 						PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 						PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
-						System.out.println("6");
 						//itemDrop();							
 						if(PlayState.map.getTileId(x, y + 4, PlayState.wallLayer) == 98){
-							hitWallDown1 = true;
-							System.out.println("7");						
+							hitWallDown1 = true;					
 							}
 					
 						if(PlayState.map.getTileId(x, y + 4, PlayState.boxLayer) == 0 && blastRadius == 4 && hitWallDown1 != true){
@@ -313,7 +306,6 @@ public class Bombs {
 							PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 							PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
 							PlayState.map.setTileId(x, y + 4, PlayState.fireLayerV, 143);
-							System.out.println("8");
 							//itemDrop();
 							}
 					}
@@ -362,36 +354,29 @@ public class Bombs {
 			//If no boxes within blast radius range
 			if(PlayState.map.getTileId(x, y - 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y - 1, PlayState.wallLayer ) == 98){
 				hitWallUp1 = true;
-				System.out.println("1");
 			}
 			if (PlayState.map.getTileId(x, y - 1, PlayState.boxLayer) == 0 && hitWallUp1 != true) {
 				PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
 				//itemDrop();
-				System.out.println("2");
 				if(PlayState.map.getTileId(x, y - 2, PlayState.wallLayer) == 98){
 					hitWallUp1 = true;
-					System.out.println("3");
 					}
 				
 				if(PlayState.map.getTileId(x, y - 2, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallUp1 != true){
 					PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
 					PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
-					System.out.println("4");	
 					//itemDrop();
 					if(PlayState.map.getTileId(x, y - 3, PlayState.wallLayer) == 98){
-						hitWallUp1 = true;
-						System.out.println("5");							
+						hitWallUp1 = true;							
 						}
 					
 					if(PlayState.map.getTileId(x, y - 3, PlayState.boxLayer) == 0 && blastRadius >= 3 && hitWallUp1 != true){
 						PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
 						PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
 						PlayState.map.setTileId(x, y - 3, PlayState.fireLayerV, 143);
-						System.out.println("6");
 						//itemDrop();							
 						if(PlayState.map.getTileId(x, y - 4, PlayState.wallLayer) == 98){
-							hitWallUp1 = true;
-							System.out.println("7");						
+							hitWallUp1 = true;						
 							}
 					
 						if(PlayState.map.getTileId(x, y - 4, PlayState.boxLayer) == 0 && blastRadius == 4 && hitWallUp1 != true){
@@ -399,7 +384,6 @@ public class Bombs {
 							PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
 							PlayState.map.setTileId(x, y - 3, PlayState.fireLayerV, 143);
 							PlayState.map.setTileId(x, y - 4, PlayState.fireLayerV, 143);
-							System.out.println("8");
 							//itemDrop();
 							}
 					}
