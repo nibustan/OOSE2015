@@ -13,10 +13,10 @@ public class Item {
 	public static void main(String[] args) {
 		
 	//	Is the Item inside of a bombblast?
-	boolean inBlast = false;
+	//boolean inBlast = false;
 	
 //	Has a 'Player' moved onto the same tile as the Item?
-	boolean pickedUp = false;
+	//boolean pickedUp = false;
 	}
 	
 	public void Items(int x, int y, int bombAmount) {
@@ -29,11 +29,22 @@ public class Item {
 		randomDrop();
 	}
 	
+	// 25% chance of an item spawning.
+	public void itemDrop(){
+		int min = 0;
+		int max = 4;
+		Random rand = new Random();
+		int spawn = rand.nextInt((max-min)+1)+min;
+		if(spawn == 1){
+			randomDrop();
+		}
+	}
+	
 	public void randomDrop(){
 		int min = 0;
 		int max = 5;
 		Random rand = new Random();
-		int randomNum = rand.nextInt((max - min) + 1) + min;
+		int randomNum = rand.nextInt((max-min)+1)+min;
 		if(randomNum == 1){
 			bombUp(x,y,bombAmount);
 		} else if (randomNum == 2){
