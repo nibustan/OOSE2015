@@ -22,6 +22,8 @@ public class Player {
 	public int inControl;
 	
 	ArrayList<Bombs> bombs = new ArrayList<Bombs>();
+	ArrayList<Bombs> bombs2 = new ArrayList<Bombs>();
+
 		
 	public Player(int inControl){
 		this.inControl = inControl;
@@ -40,7 +42,14 @@ public class Player {
 				bombs.get(i).update();
 			}
 		}
-		
+		for(int i = 0; i<=bombs2.size()-1; i++){
+			if(bombs2.get(i).isExploded == true){
+				bombs2.remove(i);
+				bombsActive--;
+			} else {
+				bombs2.get(i).update();
+			}
+		}
 	}
 
 	public void movement(GameContainer gc)throws SlickException{
@@ -198,13 +207,27 @@ public class Player {
 
 
 	public void placeBomb(GameContainer gc)throws SlickException{
-		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
-			if(bombs.size() < 3 && PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25){
-			bombs.add(new Bombs(x,y,bombLength));
-			bombs.get(bombs.size()-1).init();
-			PlayState.map.setTileId(x, y, PlayState.bombLayer, 25);
-			bombsActive++;
+		if (inControl == 1) {
+			if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
+				if (bombs.size() < 3
+						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {
+					bombs.add(new Bombs(x, y, bombLength));
+					bombs.get(bombs.size() - 1).init();
+					PlayState.map.setTileId(x, y, PlayState.bombLayer, 25);
+					bombsActive++;
+				}
 			}
-		}	
+		}
+		if (inControl == 2) {
+			if (gc.getInput().isKeyPressed(Input.KEY_P)) {
+				if (bombs2.size() < 3
+						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {
+					bombs2.add(new Bombs(x, y, bombLength));
+					bombs2.get(bombs2.size() - 1).init();
+					PlayState.map.setTileId(x, y, PlayState.bombLayer, 25);
+					bombsActive++;
+				}
+			}
+		}
 	}
 }
