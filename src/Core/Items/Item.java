@@ -17,6 +17,7 @@ public class Item {
 	
 //	Has a 'Player' moved onto the same tile as the Item?
 	//boolean pickedUp = false;
+		
 	}
 	
 	public Item(int x, int y, int bombAmount) {

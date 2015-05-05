@@ -33,6 +33,8 @@ public class Bombs {
 	boolean fireStart;
 	public boolean isExploded;
 	
+	
+	
 	public Bombs(int x, int y, int blastRadius) {
 		this.x = x;
 		this.y = y;
@@ -51,6 +53,13 @@ public class Bombs {
 		if(startRemoveFire == true){
 		removeFire();
 		}
+		
+		if (PlayState.map.getTileId(x, y, PlayState.fireLayerH) == 133 || PlayState.map.getTileId(x, y, PlayState.fireLayerV) == 143) {
+			explodeBomb();
+			timerStart = 0;
+			timerDif = 0;
+		}
+		
 	}
 	
 	public void timerBomb (){
@@ -62,6 +71,8 @@ public class Bombs {
 				}
 			  }	
 
+	
+	
 	public void explodeBomb(){ //BOMB EXPLOSION
 			
 			//Removes Bomb
