@@ -135,7 +135,7 @@ public class Player {
 		//player2
 		if(inControl == 2){
 			//Move player2 right
-			if (gc.getInput().isKeyPressed(Input.KEY_NUMPAD6)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_J)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer2, 6);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer3, 7);
@@ -153,7 +153,7 @@ public class Player {
 			}
 
 			// Move Player2 Left
-			if (gc.getInput().isKeyPressed(Input.KEY_NUMPAD4)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_L)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer2, 6);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer3, 7);
@@ -171,7 +171,7 @@ public class Player {
 			}
 			
 			// Move Player2 Up
-			if (gc.getInput().isKeyPressed(Input.KEY_NUMPAD8)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_I)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer2, 6);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer3, 7);
@@ -189,7 +189,7 @@ public class Player {
 			}
 
 			// Move Player2 Down
-			if (gc.getInput().isKeyPressed(Input.KEY_NUMPAD5)) {
+			if (gc.getInput().isKeyPressed(Input.KEY_K)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer2, 6);
 				PlayState.map.setTileId(x, y, PlayState.player2Layer3, 7);
