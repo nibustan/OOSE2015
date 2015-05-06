@@ -442,6 +442,19 @@ public class Bombs {
 			startRemoveFire = true;
 			}
 	}
+	
+	/**
+	 * Remove Fire method:
+	 * Removes the fire blast in the image (game board) 1 second after it has been applied.
+	 * It is called in explodeBomb() method.
+	 * The timer uses the same algorithm as in timerBomb() though it has its own
+	 * timerDifFire variable which is the current time, when the method is called.
+	 * If the 1 second passes the method runs two for-loops, which goes goes through
+	 * the image in the length of 22x13. It checks for each tile if its ID fits either
+	 * 123 (four-way fire), 143 (vertical fire), and/or 133 (horizontal fire), and set 
+	 * its ID to 122 (a value not used) to remove them. 
+	 * 
+	 */
 	public void removeFire (){
 		timerDifFire = System.currentTimeMillis();
 		if(timerDifFire-timerStartFire > timerAmountFire){
