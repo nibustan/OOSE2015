@@ -159,8 +159,7 @@ public class Bombs {
 			//Right bomb check
 			if(PlayState.map.getTileId(x + 1, y, PlayState.bombLayer) == 1){
 				PlayState.map.setTileId(x + 1, y, PlayState.fireLayer, 123);
-			}
-			
+			}		
 			//Left
 			if (PlayState.map.getTileId(x - 1, y, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x - 1, y, PlayState.boxLayer, 0);

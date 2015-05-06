@@ -125,10 +125,10 @@ public class Player {
 			}
 			//Check if player1 is inside of a blast
 			if(PlayState.map.getTileId(x,y, PlayState.fireLayerH) ==  133
-					|| PlayState.map.getTileId(x,y, PlayState.fireLayerV) ==  143
-							||PlayState.map.getTileId(x,y, PlayState.fireLayer) ==  123){
+						|| PlayState.map.getTileId(x,y, PlayState.fireLayerV) ==  143
+								||PlayState.map.getTileId(x,y, PlayState.fireLayer) ==  123){
 				init();
-				//Core.GameController.player1Alive = false;
+				Core.GameController.player1Alive = false;
 			}
 		}
 		
@@ -210,7 +210,7 @@ public class Player {
 					|| PlayState.map.getTileId(x,y, PlayState.fireLayerV) ==  143
 							||PlayState.map.getTileId(x,y, PlayState.fireLayer) ==  123){
 				init();
-				//Core.GameController.player2Alive = false;
+				Core.GameController.player2Alive = false;
 			}
 		}
 		
@@ -230,7 +230,7 @@ public class Player {
 				}
 			}
 		}
-		if (inControl == 1) {
+		if (inControl == 2) {
 			if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
 				if (bombs2.size() < 3
 						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {

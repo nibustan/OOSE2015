@@ -2,8 +2,8 @@ package Core;
 
 public class GameController {
 private byte playersAlive;
-private boolean player1Alive = true;
-private boolean player2Alive = true;
+public static boolean player1Alive = true;
+public static boolean player2Alive = true;
 private byte gamesWon1;
 private byte gamesWon2;
 private byte gameTurn;
