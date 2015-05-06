@@ -33,14 +33,22 @@ public class Bombs {
 	boolean fireStart;
 	public boolean isExploded;	
 	
-	
+	/**
+	 * A bomb which can be placed on the map as an active bomb.
+	 * @param x = the x position of the bomb.
+	 * @param y = the y position of the bomb.
+	 * @param blastRadius = How many tilelenghts the bomb will create 
+	 * 						fire in each direction when it explodes.
+	 */
 	public Bombs(int x, int y, int blastRadius) {
 		this.x = x;
 		this.y = y;
 		this.blastRadius = blastRadius;
 	}
 
-	//Initialization on new round
+	/**
+	 * Initializes the bomb explosion variables.
+	 */
 	public void init(){
 		timerStart = System.currentTimeMillis();
 		isExploded = false;
@@ -48,8 +56,10 @@ public class Bombs {
 		startRemoveFire = false;
 	}
 	
-	//Keeps checking for timers on bombs, if fire tiles should be removed,
-	//and if bomb tiles are covered in fire tiles.
+	/**
+	 * Keeps checking the timers on the active bombs, removes fire and
+	 * checks if active bombs on the map should explode early due to fireblasts.
+	 */
 	public void update(){
 		timerBomb();
 		if(startRemoveFire == true){
@@ -60,7 +70,9 @@ public class Bombs {
 			PlayState.map.setTileId(x , y, PlayState.fireLayer, 123);
 		}
 	}
-	//Checks if time has ran out. If it has, the bomb will explode.
+	/**
+	 * Checks if time has ran out. If it has, the bomb will explode.
+	 */
 	public void timerBomb (){
 		  	timerDif = System.currentTimeMillis();
 				if(timerDif-timerStart > timerAmountBomb){
@@ -68,7 +80,15 @@ public class Bombs {
 				}
 			  }	
 	
-	//Bomb explosion.
+	
+	/**
+	 * Bomb explosion.
+	 * First it sets all wall booleans to false, indicating that it isn't initially blocked.
+	 * Then it removes the bomb graphic from its position and exchanges it
+	 * with the middle fireblast graphic. 
+	 * The method then runs 4 similar directional fireblast codepieces, where it looks out for boxes,
+	 * walls and other bombs while it travels the indicated bomblength.
+	 */
 	public void explodeBomb(){		
 		hitWallRight = false;
 		hitWallLeft = false;
@@ -422,7 +442,6 @@ public class Bombs {
 			startRemoveFire = true;
 			}
 	}
-
 	public void removeFire (){
 		timerDifFire = System.currentTimeMillis();
 		if(timerDifFire-timerStartFire > timerAmountFire){

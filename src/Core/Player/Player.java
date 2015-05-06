@@ -73,7 +73,7 @@ public class Player {
 					PlayState.map.setTileId(x, y, PlayState.player1Layer1, 50);
 				}
 			}
-			// Move Player Left
+			// Move Player1 Left
 			if (gc.getInput().isKeyPressed(Input.KEY_A)) {
 				PlayState.map.setTileId(x, y, PlayState.player1Layer1, 1);
 				PlayState.map.setTileId(x, y, PlayState.player1Layer2, 2);
@@ -90,7 +90,7 @@ public class Player {
 					PlayState.map.setTileId(x, y, PlayState.player1Layer2, 1);
 				}
 			}
-			// Move Player Up
+			// Move Player1 Up
 			if (gc.getInput().isKeyPressed(Input.KEY_W)) {
 				PlayState.map.setTileId(x, y, PlayState.player1Layer1, 1);
 				PlayState.map.setTileId(x, y, PlayState.player1Layer2, 2);
@@ -107,7 +107,7 @@ public class Player {
 					PlayState.map.setTileId(x, y, PlayState.player1Layer3, 1);
 				}
 			}
-			// Move Player Down
+			// Move Player1 Down
 			if (gc.getInput().isKeyPressed(Input.KEY_S)) {
 				PlayState.map.setTileId(x, y, PlayState.player1Layer1, 1);
 				PlayState.map.setTileId(x, y, PlayState.player1Layer2, 2);

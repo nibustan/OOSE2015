@@ -31,7 +31,11 @@ public class Item {
 		//itemDrop();
 	}
 	
-	// 25% chance of an item spawning.
+	/**
+	 * 25% chance of an item spawning.
+	 * @param x = x position of the item
+	 * @param y = y position of the item
+	 */
 	public static void itemDrop(int x, int y){
 		int min = 0;
 		int max = 4;
@@ -41,7 +45,11 @@ public class Item {
 			randomDrop(x, y);
 		}
 	}
-	
+	/**
+	 * Determines which item spawns from the 5 available.
+	 * @param x = x position of the item
+	 * @param y = y position of the item
+	 */
 	public static void randomDrop(int x, int y){
 		int min = 1;
 		int max = 5;
@@ -60,7 +68,14 @@ public class Item {
 		}
 	}
 	
-	//Bomb Up - Adds 1 to the players bomb amount.
+	/**
+	 * Bomb Up - Adds 1 to the players active bomb amount, meaning how many they can
+	 * 			 have out on the map the same time.
+	 * @param x = x position of the item
+	 * @param y = y position of the item
+	 * @param bombAmount = number of active bombs a player can have on the map at a time.
+	 * @return = changed bombAmount
+	 */
 	public static int bombUp(int x, int y,int bombAmount){
 		PlayState.map.setTileId(x, y, PlayState.bombUpLayer, 155);
 		
@@ -70,7 +85,13 @@ public class Item {
 		return bombAmount;
 	}
 	
-	//Bomb Down - Detracts 1 from the players bomb amount.
+	/**
+	 * Bomb Down - Detracts 1 from the players bomb amount.
+	 * @param x = x position of the item
+	 * @param y = y position of the item
+	 * @param bombAmount = number of active bombs a player can have on the map at a time.
+	 * @return = changed bombAmount
+	 */
 	public static int bombDown(int x, int y,int bombAmount){
 		PlayState.map.setTileId(x, y, PlayState.bombDownLayer, 165);
 		
@@ -80,7 +101,13 @@ public class Item {
 		return bombAmount;
 	}
 	
-	//Fire Up - Adds 1 tilelength to the radius of a players bomblength.
+	/**
+	 * Fire Up - Adds 1 tilelength to the radius of a players bomblength.
+	 * @param x = x position of the item
+	 * @param y = y position of the item
+	 * @param bombLength = number that determines how many tilelengths a fireblast travels.
+	 * @return = changed bombLength
+	 */
 	public static int fireUp(int x, int y,int bombLength){
 		PlayState.map.setTileId(x, y, PlayState.fireUpLayer, 175);
 		
@@ -90,7 +117,13 @@ public class Item {
 		return bombLength;
 	}
 	
-	//Fire Down - Removes 1 tilelength from the radius of a players bomblength.
+	/**
+	 * Fire Down - Removes 1 tilelength from the radius of a players bomblength.
+	 * @param x = x position of the item
+	 * @param y = y position of the item
+	 * @param bombLength = number that determines how many tilelengths a fireblast travels.
+	 * @return = changed bombLength
+	 */
 	public static int fireDown(int x, int y,int bombLength){
 		PlayState.map.setTileId(x, y, PlayState.fireDownLayer, 185);
 		
@@ -100,7 +133,13 @@ public class Item {
 		return bombLength;
 	}
 	
-	//Power Bomb - Maxes out a players bombLength.
+	/**
+	 * Power Bomb - Maxes out a players bombLength.
+	 * @param x = x position of the item
+	 * @param y = y position of the item
+	 * @param bombLength = number that determines how many tilelengths a fireblast travels.
+	 * @return = changed bombLength
+	 */
 	public static int powerBomb(int x, int y,int bombLength){
 		PlayState.map.setTileId(x, y, PlayState.powerBombLayer, 195);
 		
