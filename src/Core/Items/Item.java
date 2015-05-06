@@ -7,12 +7,12 @@ import Core.GameState.PlayState;
 
 public class Item {
 	
-	public int x,y,bombAmount;
+	public static int x,y,bombAmount, bombLength;
 
 	
 	public static void main(String[] args) {
 		
-	//	Is the Item inside of a bombblast?
+	//	Is the Item inside of a bombBlast?
 	//boolean inBlast = false;
 	
 //	Has a 'Player' moved onto the same tile as the Item?
@@ -20,28 +20,29 @@ public class Item {
 		
 	}
 	
-	public Item(int x, int y, int bombAmount) {
-		this.x = x;
-		this.y = y;
-		this.bombAmount = bombAmount;
-	}
+	//public Item(int x, int y, int bombAmount, int bombLength) {
+		//this.x = x;
+		//this.y = y;
+		//this.bombAmount = bombAmount;
+		//this.bombLength = bombLength;
+	//}
 	
 	public void update(){
-		itemDrop();
+		//itemDrop();
 	}
 	
 	// 25% chance of an item spawning.
-	public void itemDrop(){
+	public static void itemDrop(int x, int y){
 		int min = 0;
 		int max = 4;
 		Random rand = new Random();
 		int spawn = rand.nextInt((max-min)+1)+min;
 		if(spawn == 1){
-			randomDrop();
+			randomDrop(x, y);
 		}
 	}
 	
-	public void randomDrop(){
+	public static void randomDrop(int x, int y){
 		int min = 1;
 		int max = 5;
 		Random rand = new Random();
@@ -51,11 +52,11 @@ public class Item {
 		} else if (randomNum == 2){
 			bombDown(x,y,bombAmount);
 		} else if (randomNum == 3){
-			fireUp(x,y,bombAmount);
+			fireUp(x,y,bombLength);
 		} else if (randomNum == 4){
-			fireDown(x,y,bombAmount);
+			fireDown(x,y,bombLength);
 		} else if (randomNum == 5){
-			powerBomb(x,y,bombAmount);
+			powerBomb(x,y,bombLength);
 		}
 	}
 	

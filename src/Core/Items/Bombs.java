@@ -20,7 +20,7 @@ public class Bombs {
 	public boolean hitBoxUp;
 	public boolean hitBoxDown;
 	
-	//Time
+	//Time variables
 	protected long timerStart = 0;
 	protected long timerStartFire = 0;
 	protected long timerDif = 0;
@@ -33,19 +33,23 @@ public class Bombs {
 	boolean fireStart;
 	public boolean isExploded;	
 	
+	
 	public Bombs(int x, int y, int blastRadius) {
 		this.x = x;
 		this.y = y;
 		this.blastRadius = blastRadius;
 	}
 
+	//Initialization on new round
 	public void init(){
 		timerStart = System.currentTimeMillis();
 		isExploded = false;
 		fireStart = true;
 		startRemoveFire = false;
 	}
-		
+	
+	//Keeps checking for timers on bombs, if fire tiles should be removed,
+	//and if bomb tiles are covered in fire tiles.
 	public void update(){
 		timerBomb();
 		if(startRemoveFire == true){
@@ -56,7 +60,7 @@ public class Bombs {
 			PlayState.map.setTileId(x , y, PlayState.fireLayer, 123);
 		}
 	}
-	
+	//Checks if time has ran out. If it has, the bomb will explode.
 	public void timerBomb (){
 		  	timerDif = System.currentTimeMillis();
 				if(timerDif-timerStart > timerAmountBomb){
@@ -64,20 +68,20 @@ public class Bombs {
 				}
 			  }	
 	
-	public void explodeBomb(){ //BOMB EXPLOSION
-			
+	//Bomb explosion.
+	public void explodeBomb(){		
 		hitWallRight = false;
 		hitWallLeft = false;
 		hitWallUp = false;
 		hitWallDown = false;
 		
-			//Removes Bomb
+			//Removes Bomb tile
 			PlayState.map.setTileId(x, y, PlayState.bombLayer, 26);
 			
-			//Middle
+			//Middle fireblast
 			PlayState.map.setTileId(x, y, PlayState.fireLayer, 123);
 			
-			//Right
+			//Right fireblast
 			if (PlayState.map.getTileId(x + 1, y, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x + 1, y, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
@@ -159,13 +163,14 @@ public class Bombs {
 			//Right bomb check
 			if(PlayState.map.getTileId(x + 1, y, PlayState.bombLayer) == 1){
 				PlayState.map.setTileId(x + 1, y, PlayState.fireLayer, 123);
-			}		
-			//Left
+			}
+			
+			//Left fireblast
 			if (PlayState.map.getTileId(x - 1, y, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x - 1, y, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 				hitBoxLeft = true;
-				//itemDrop();	
+				Core.Items.Item.itemDrop(x -1, y);	
 			}
 			else if(PlayState.map.getTileId(x - 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x - 1, y, PlayState.wallLayer ) == 98){
 				hitWallLeft = true;
@@ -244,7 +249,7 @@ public class Bombs {
 			}
 
 			
-			//Down
+			//Down fireblast
 			if (PlayState.map.getTileId(x, y + 1, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x, y + 1, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
@@ -327,7 +332,7 @@ public class Bombs {
 				PlayState.map.setTileId(x , y + 1, PlayState.fireLayer, 123);
 			}
 			
-			//Up
+			//Up fireblast
 			if (PlayState.map.getTileId(x, y - 1, PlayState.boxLayer) == 111) {
 				PlayState.map.setTileId(x, y - 1, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
@@ -410,6 +415,7 @@ public class Bombs {
 				PlayState.map.setTileId(x , y - 1, PlayState.fireLayer, 123);
 			}
 			
+			//Clean up procedure
 			if(fireStart == true){
 				fireStart = false;
 			timerStartFire = System.currentTimeMillis();
