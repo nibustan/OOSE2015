@@ -40,13 +40,23 @@ public class PlayState extends BasicGameState{
 	
 	public static int powerBombLayer;
 	
-	
+	/**
+	 * Initializes two Player: player1 & player2. Each is assigned a number, 
+	 * which is used for the variable inControl from the Player class.
+	 */
 	Player player1 = new Player(1);
 	Player player2 = new Player(2);
 	
 	public PlayState(int state){
 	}
-
+	
+	/**
+	 * init method:
+	 * This method is the first method that is run. This is a required method 
+	 * from Slick2d.
+	 * The layers mentioned in the method is from Tiled (map.tmx).
+	 */
+	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg)throws SlickException {
 		//TiledMap setup initialization
@@ -97,10 +107,19 @@ public class PlayState extends BasicGameState{
 		player2.bombLength = 1;
 		
 	}
-
+	
+	/**
+	 * render method:
+	 * Is used for rendering the graphical parts of the game. This is also a
+	 * required method from Slick2d. 
+	 * Each layers sprites have their own ID. Their ID can be seen in map.txt. 
+	 * For the live rendering: they use pre-rendered sprites as a reference. These 
+	 * references are on a tile to the right in the game board.
+	 * Each tiles sprite is 32x32 pixels. 
+	 */
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)throws SlickException {
-		//GUI
+		
 		g.drawString("P1 Blvl = "+ String.valueOf(player1.bombLength), 540, 50);
 		g.drawString("P1 BAct = "+ String.valueOf(player1.bombsActive), 540, 75);
 		
@@ -166,7 +185,11 @@ public class PlayState extends BasicGameState{
 					}			
 				}
 	}
-
+	
+	/**update method:
+	 * Is used for updating the games frames. This is also a
+	 * required method from Slick2d. 
+	 */
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int i)throws SlickException {
 
