@@ -123,7 +123,13 @@ public class Player {
 					PlayState.map.setTileId(x, y, PlayState.player1Layer4, 1);
 				}
 			}
-			
+			//Check if player1 is inside of a blast
+			if(PlayState.map.getTileId(x,y, PlayState.fireLayerH) ==  133
+					|| PlayState.map.getTileId(x,y, PlayState.fireLayerV) ==  143
+							||PlayState.map.getTileId(x,y, PlayState.fireLayer) ==  123){
+				init();
+				//Core.GameController.player1Alive = false;
+			}
 		}
 		
 		//player2
@@ -198,6 +204,13 @@ public class Player {
 					y++;
 					PlayState.map.setTileId(x, y, PlayState.player2Layer4, 5);
 				}
+			}
+			//Check if player2 is inside of a blast
+			if(PlayState.map.getTileId(x,y, PlayState.fireLayerH) ==  133
+					|| PlayState.map.getTileId(x,y, PlayState.fireLayerV) ==  143
+							||PlayState.map.getTileId(x,y, PlayState.fireLayer) ==  123){
+				init();
+				//Core.GameController.player2Alive = false;
 			}
 		}
 		

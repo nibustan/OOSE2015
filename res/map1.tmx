@@ -45,11 +45,6 @@
    H4sIAAAAAAAAC2NgoB3gIZMeNXfU3FFzB4+5tAAAID4QWngEAAA=
   </data>
  </layer>
- <layer name="FireLayer" width="22" height="13" visible="0">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoB3gIgMTay459Kh7R9076l7S3UsLAADcAg8CeAQAAA==
-  </data>
- </layer>
  <layer name="BombUp" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoD3ghWJkNjqfXHORaULixJhHKibFnZSK08u9hNxDiTmj4YvpDmqlX2T9tMhv1AQAiAHMmHgEAAA=
@@ -98,6 +93,11 @@
  <layer name="Player2Layer1" width="22" height="13" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoB1gJQMTay459Kh7R9076l7S3UsLAAAzNysqeAQAAA==
+  </data>
+ </layer>
+ <layer name="FireLayer" width="22" height="13" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoB3gIgMTay459Kh7R9076l7S3UsLAADcAg8CeAQAAA==
   </data>
  </layer>
  <layer name="Player2Layer2" width="22" height="13" visible="0">

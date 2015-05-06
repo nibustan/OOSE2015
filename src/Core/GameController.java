@@ -23,6 +23,10 @@ void update(){
 		else if(player2Alive == true){
 			++gamesWon2;
 		}
+		else if(player1Alive == false && player2Alive == false && gamesWon1 > 0 && gamesWon2 > 0){
+			--gamesWon1;
+			--gamesWon2;
+		}
 		if(gamesWon1 < 3 && gamesWon2 < 3){
 			loadNextTurn();
 		}
