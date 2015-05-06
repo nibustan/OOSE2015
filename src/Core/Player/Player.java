@@ -24,14 +24,21 @@ public class Player {
 	ArrayList<Bombs> bombs = new ArrayList<Bombs>(); // Player 1's bombs on the map.
 	ArrayList<Bombs> bombs2 = new ArrayList<Bombs>(); // Player 2's bombs on the map.
 		
-	//Determines which player the code will defer to
+	/**
+	 * Determines which player the code will defer to.
+	 * @param inControl = The number selects the player: 1 = Player 1, 2 = Player 2.
+	 */
 	public Player(int inControl){
 		this.inControl = inControl;
 	}
 	
 	public void init()throws SlickException {
 	}
-
+/**
+ * The update method keeps track of both players active bombs on the map.
+ * @param gc = The gamecontainer.
+ * @throws SlickException = A generic exception thrown by everything in the Slick2D library
+ */
 	public void update(GameContainer gc) throws SlickException {
 		//Bombs Update
 		for(int i = 0; i<=bombs.size()-1; i++){
@@ -51,7 +58,12 @@ public class Player {
 			}
 		}
 	}
-
+	
+	/**
+	 * The movement method controls the movements of player 1 and player 2.
+	 * @param gc = The gamecontainer.
+	 * @throws SlickException = A generic exception thrown by everything in the Slick2D library.
+	 */
 	public void movement(GameContainer gc)throws SlickException{
 		
 		//Player 1
@@ -218,7 +230,11 @@ public class Player {
 		
 	}
 
-
+	/**
+	 * This method places a bomb on the specified players x & y coordinates upon player input.
+	 * @param gc = The gamecontainer.
+	 * @throws SlickException = A generic exception thrown by everything in the Slick2D library.
+	 */
 	public void placeBomb(GameContainer gc)throws SlickException{
 		if (inControl == 1) {
 			if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
