@@ -7,17 +7,18 @@ import Core.GameState.PlayState;
 
 public class Item {
 	
-	//public static int x,y,bombAmount, bombLength;
+	public static int x,y,bombAmount, bombLength;
 
 	
+	public static void main(String[] args) {
 		
-//		Is the Item inside of a bombBlast?
+	//	Is the Item inside of a bombBlast?
 	//boolean inBlast = false;
 	
 //	Has a 'Player' moved onto the same tile as the Item?
 	//boolean pickedUp = false;
 		
-	
+	}
 	
 	//public Item(int x, int y, int bombAmount, int bombLength) {
 		//this.x = x;
@@ -35,13 +36,13 @@ public class Item {
 	 * @param x = x position of the item
 	 * @param y = y position of the item
 	 */
-	public static void itemDrop(int x, int y, int bombAmount, int bombLength){
+	public static void itemDrop(int x, int y){
 		int min = 0;
 		int max = 4;
 		Random rand = new Random();
 		int spawn = rand.nextInt((max-min)+1)+min;
 		if(spawn == 1){
-			randomDrop(x, y, bombAmount, bombLength);
+			randomDrop(x, y);
 		}
 	}
 	/**
@@ -49,7 +50,7 @@ public class Item {
 	 * @param x = x position of the item
 	 * @param y = y position of the item
 	 */
-	public static void randomDrop(int x, int y, int bombAmount, int bombLength){
+	public static void randomDrop(int x, int y){
 		int min = 1;
 		int max = 5;
 		Random rand = new Random();
