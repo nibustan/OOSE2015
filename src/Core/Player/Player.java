@@ -57,10 +57,13 @@ public class Player {
 				bombs2.get(i).update();
 			}
 		}
+<<<<<<< HEAD
 		//Fire update
 		/*if(PlayState.map.getTileId(x, y, PlayState.fireLayer) ==123 || PlayState.map.getTileId(x, y, fireLayerH) == 133 || PlayState.map.getTileId(x, y, fireLayerV){
 			hitByFire = true;
 		}*/
+=======
+>>>>>>> origin/master
 	}
 	
 	/**
