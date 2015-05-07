@@ -22,7 +22,6 @@ public class Game extends StateBasedGame {
 	protected long timerDif = 0;
 	protected int timerAmountBomb = 3000; // = 3 second
 	public Music music;
-	public Sound bombS;
 	public Sound powerdownS;
 	public Sound powerupS;
 
@@ -45,7 +44,6 @@ public class Game extends StateBasedGame {
 		music.setVolume(0.4f);
 		music.loop();
 		
-		bombS = new Sound("res/bomb.wav");
 		powerdownS = new Sound("res/powerdown.wav");
 		powerupS = new Sound("res/powerup.wav");
 	}
