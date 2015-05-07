@@ -1,4 +1,7 @@
 package Core.Items;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
+
 import Core.GameState.PlayState;
 import Core.Player.Player;
 //import Core.Items.Item;
@@ -34,6 +37,9 @@ public class Bombs {
 	boolean fireStart;
 	public boolean isExploded;	
 	
+	Sound bombS;
+
+	
 	/**
 	 * A bomb which can be placed on the map as an active bomb.
 	 * @param x = the x position of the bomb.
@@ -49,12 +55,14 @@ public class Bombs {
 
 	/**
 	 * Initializes the bomb explosion variables.
+	 * @throws SlickException 
 	 */
-	public void init(){
+	public void init() throws SlickException{
 		timerStart = System.currentTimeMillis();
 		isExploded = false;
 		fireStart = true;
 		startRemoveFire = false;
+		bombS = new Sound("res/bomb.wav");
 	}
 	
 	/**
@@ -64,7 +72,7 @@ public class Bombs {
 	public void update(Player p){
 		timerBomb(p);
 		if(startRemoveFire == true){
-		removeFire();
+			removeFire();
 		}
 		if (PlayState.map.getTileId(x, y, PlayState.fireLayerH) == 133 || PlayState.map.getTileId(x, y, PlayState.fireLayerV) == 143) {
 			explodeBomb(p);
@@ -74,21 +82,27 @@ public class Bombs {
 	/**
 	 * Checks if time has ran out. If it has, the bomb will explode.
 	 */
-	public void timerBomb (Player p){
-		  	timerDif = System.currentTimeMillis();
-				if(timerDif-timerStart > timerAmountBomb){
-					explodeBomb (p);
-				}
-			  }	
+
+
+
+	public void timerBomb(Player p) {
+		timerDif = System.currentTimeMillis();
+		if (timerDif - timerStart > timerAmountBomb) {
+			explodeBomb(p);
+			if(!bombS.playing()) 
+				bombS.play();
+		}
+	}
+
 	
-	
+
 	/**
-	 * Bomb explosion.
-	 * First it sets all wall booleans to false, indicating that it isn't initially blocked.
-	 * Then it removes the bomb graphic from its position and exchanges it
-	 * with the middle fireblast graphic. 
-	 * The method then runs 4 similar directional fireblast codepieces, where it looks out for boxes,
-	 * walls and other bombs while it travels the indicated bomblength.
+	 * Bomb explosion. First it sets all wall booleans to false, indicating that
+	 * it isn't initially blocked. Then it removes the bomb graphic from its
+	 * position and exchanges it with the middle fireblast graphic. The method
+	 * then runs 4 similar directional fireblast codepieces, where it looks out
+	 * for boxes, walls and other bombs while it travels the indicated
+	 * bomblength.
 	 */
 	public void explodeBomb(Player p){		
 		hitWallRight = false;
