@@ -64,7 +64,7 @@ public class Player {
 				bombs.remove(i);
 				bombsActive--;
 			} else {
-				bombs.get(i).update();
+				bombs.get(i).update(this);
 			}
 		}
 		for(int i = 0; i<=bombs2.size()-1; i++){
@@ -72,7 +72,7 @@ public class Player {
 				bombs2.remove(i);
 				bombsActive--;
 			} else {
-				bombs2.get(i).update();
+				bombs2.get(i).update(this);
 			}
 		}
 		//Fire update
