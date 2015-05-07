@@ -1,5 +1,6 @@
 package Core.Items;
 import Core.GameState.PlayState;
+import Core.Player.Player;
 //import Core.Items.Item;
 
 public class Bombs {
@@ -37,7 +38,7 @@ public class Bombs {
 	 * A bomb which can be placed on the map as an active bomb.
 	 * @param x = the x position of the bomb.
 	 * @param y = the y position of the bomb.
-	 * @param blastRadius = How many tilelenghts the bomb will create 
+	 * @param blastRadius = How many tilelengths the bomb will create 
 	 * 						fire in each direction when it explodes.
 	 */
 	public Bombs(int x, int y, int blastRadius) {
@@ -60,23 +61,23 @@ public class Bombs {
 	 * Keeps checking the timers on the active bombs, removes fire and
 	 * checks if active bombs on the map should explode early due to fireblasts.
 	 */
-	public void update(){
-		timerBomb();
+	public void update(Player p){
+		timerBomb(p);
 		if(startRemoveFire == true){
 		removeFire();
 		}
 		if (PlayState.map.getTileId(x, y, PlayState.fireLayerH) == 133 || PlayState.map.getTileId(x, y, PlayState.fireLayerV) == 143) {
-			explodeBomb();
+			explodeBomb(p);
 			PlayState.map.setTileId(x , y, PlayState.fireLayer, 123);
 		}
 	}
 	/**
 	 * Checks if time has ran out. If it has, the bomb will explode.
 	 */
-	public void timerBomb (){
+	public void timerBomb (Player p){
 		  	timerDif = System.currentTimeMillis();
 				if(timerDif-timerStart > timerAmountBomb){
-					explodeBomb ();
+					explodeBomb (p);
 				}
 			  }	
 	
@@ -89,7 +90,7 @@ public class Bombs {
 	 * The method then runs 4 similar directional fireblast codepieces, where it looks out for boxes,
 	 * walls and other bombs while it travels the indicated bomblength.
 	 */
-	public void explodeBomb(){		
+	public void explodeBomb(Player p){		
 		hitWallRight = false;
 		hitWallLeft = false;
 		hitWallUp = false;
@@ -106,7 +107,7 @@ public class Bombs {
 				PlayState.map.setTileId(x + 1, y, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
 				hitBoxRight = true;
-				Core.Items.Item.itemDrop(x + 1,y);
+				Core.Items.Item.itemDrop(x + 1,y, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x + 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x + 1, y, PlayState.wallLayer ) == 98){
 				hitWallRight = true;
@@ -116,7 +117,7 @@ public class Bombs {
 				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);
 				hitBoxRight = true;
-				Core.Items.Item.itemDrop(x + 2,y);
+				Core.Items.Item.itemDrop(x + 2,y, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x + 2, y, PlayState.wallLayer) == 98){
 				hitWallRight = true;
@@ -127,7 +128,7 @@ public class Bombs {
 				PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x + 3, y, PlayState.fireLayerH, 133);
 				hitBoxRight = true;
-				Core.Items.Item.itemDrop(x + 3,y);
+				Core.Items.Item.itemDrop(x + 3,y, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x + 3, y, PlayState.wallLayer) == 98){
 				hitWallRight = true;
@@ -138,7 +139,7 @@ public class Bombs {
 				PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x + 3, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x + 4, y, PlayState.fireLayerH, 133);
-				Core.Items.Item.itemDrop(x + 4,y);
+				Core.Items.Item.itemDrop(x + 4,y, p.bombLength, p.bombsActive);
 			}
 			
 			//If no boxes within blast radius range
@@ -147,7 +148,7 @@ public class Bombs {
 			}
 			if (PlayState.map.getTileId(x + 1, y, PlayState.boxLayer) == 0 && hitWallRight1 != true) {
 				PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
-				Core.Items.Item.itemDrop(x + 1,y);
+				Core.Items.Item.itemDrop(x + 1,y, p.bombLength, p.bombsActive);
 				if(PlayState.map.getTileId(x + 2, y, PlayState.wallLayer) == 98){
 					hitWallRight1 = true;
 					}
@@ -155,7 +156,7 @@ public class Bombs {
 				if(PlayState.map.getTileId(x + 2, y, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallRight1 != true){
 					PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
 					PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);	
-					Core.Items.Item.itemDrop(x + 2,y);
+					Core.Items.Item.itemDrop(x + 2,y, p.bombLength, p.bombsActive);
 					if(PlayState.map.getTileId(x + 3, y, PlayState.wallLayer) == 98){
 						hitWallRight1 = true;
 						}
@@ -164,7 +165,7 @@ public class Bombs {
 						PlayState.map.setTileId(x + 1, y, PlayState.fireLayerH, 133);
 						PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);
 						PlayState.map.setTileId(x + 3, y, PlayState.fireLayerH, 133);
-						Core.Items.Item.itemDrop(x + 3,y);						
+						Core.Items.Item.itemDrop(x + 3,y, p.bombLength, p.bombsActive);						
 						if(PlayState.map.getTileId(x + 4, y, PlayState.wallLayer) == 98){
 							hitWallRight1 = true;
 							}
@@ -174,7 +175,7 @@ public class Bombs {
 							PlayState.map.setTileId(x + 2, y, PlayState.fireLayerH, 133);
 							PlayState.map.setTileId(x + 3, y, PlayState.fireLayerH, 133);
 							PlayState.map.setTileId(x + 4, y, PlayState.fireLayerH, 133);
-							Core.Items.Item.itemDrop(x + 4,y);
+							Core.Items.Item.itemDrop(x + 4,y, p.bombLength, p.bombsActive);
 							}
 					}
 				}	
@@ -190,7 +191,7 @@ public class Bombs {
 				PlayState.map.setTileId(x - 1, y, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 				hitBoxLeft = true;
-				Core.Items.Item.itemDrop(x -1, y);	
+				Core.Items.Item.itemDrop(x -1, y, p.bombLength, p.bombsActive);	
 			}
 			else if(PlayState.map.getTileId(x - 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x - 1, y, PlayState.wallLayer ) == 98){
 				hitWallLeft = true;
@@ -200,7 +201,7 @@ public class Bombs {
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
 				hitBoxLeft = true;
-				Core.Items.Item.itemDrop(x - 2,y);
+				Core.Items.Item.itemDrop(x - 2,y, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x - 2, y, PlayState.wallLayer) == 98){
 				hitWallLeft = true;
@@ -211,7 +212,7 @@ public class Bombs {
 				PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 3, y, PlayState.fireLayerH, 133);
 				hitBoxLeft = true;
-				Core.Items.Item.itemDrop(x - 3,y);
+				Core.Items.Item.itemDrop(x - 3,y, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x - 3, y, PlayState.wallLayer) == 98){
 				hitWallLeft = true;
@@ -222,7 +223,7 @@ public class Bombs {
 				PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 3, y, PlayState.fireLayerH, 133);
 				PlayState.map.setTileId(x - 4, y, PlayState.fireLayerH, 133);
-				Core.Items.Item.itemDrop(x - 4,y);
+				Core.Items.Item.itemDrop(x - 4,y, p.bombLength, p.bombsActive);
 			}
 			//If no boxes within blast radius range
 			if(PlayState.map.getTileId(x - 1, y, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x - 1, y, PlayState.wallLayer ) == 98){
@@ -230,7 +231,7 @@ public class Bombs {
 			}
 			if (PlayState.map.getTileId(x - 1, y, PlayState.boxLayer) == 0 && hitWallLeft1 != true) {
 				PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
-				Core.Items.Item.itemDrop(x - 1,y);
+				Core.Items.Item.itemDrop(x - 1,y, p.bombLength, p.bombsActive);
 				if(PlayState.map.getTileId(x - 2, y, PlayState.wallLayer) == 98){
 					hitWallLeft1 = true;
 					}
@@ -238,7 +239,7 @@ public class Bombs {
 				if(PlayState.map.getTileId(x - 2, y, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallLeft1 != true){
 					PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 					PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);	
-					Core.Items.Item.itemDrop(x - 2,y);
+					Core.Items.Item.itemDrop(x - 2,y, p.bombLength, p.bombsActive);
 					if(PlayState.map.getTileId(x - 3, y, PlayState.wallLayer) == 98){
 						hitWallLeft1 = true;
 						}
@@ -247,7 +248,7 @@ public class Bombs {
 						PlayState.map.setTileId(x - 1, y, PlayState.fireLayerH, 133);
 						PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
 						PlayState.map.setTileId(x - 3, y, PlayState.fireLayerH, 133);
-						Core.Items.Item.itemDrop(x - 3,y);							
+						Core.Items.Item.itemDrop(x - 3,y, p.bombLength, p.bombsActive);							
 						if(PlayState.map.getTileId(x - 4, y, PlayState.wallLayer) == 98){
 							hitWallLeft1 = true;
 							}
@@ -257,7 +258,7 @@ public class Bombs {
 							PlayState.map.setTileId(x - 2, y, PlayState.fireLayerH, 133);
 							PlayState.map.setTileId(x - 3, y, PlayState.fireLayerH, 133);
 							PlayState.map.setTileId(x - 4, y, PlayState.fireLayerH, 133);
-							Core.Items.Item.itemDrop(x - 4,y);
+							Core.Items.Item.itemDrop(x - 4,y, p.bombLength, p.bombsActive);
 							}
 					}
 				}	
@@ -274,7 +275,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 1, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 				hitBoxDown = true;
-				Core.Items.Item.itemDrop(x ,y + 1);
+				Core.Items.Item.itemDrop(x ,y + 1, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x, y + 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + 1, PlayState.wallLayer ) == 98){
 				hitWallDown = true;
@@ -284,7 +285,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 				hitBoxDown = true;
-				Core.Items.Item.itemDrop(x ,y + 2);
+				Core.Items.Item.itemDrop(x ,y + 2, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x, y + 2, PlayState.wallLayer) == 98){
 				hitWallDown = true;
@@ -295,7 +296,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
 				hitBoxDown = true;
-				Core.Items.Item.itemDrop(x ,y + 3);
+				Core.Items.Item.itemDrop(x ,y + 3, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x, y + 3, PlayState.wallLayer) == 98){
 				hitWallDown = true;
@@ -306,7 +307,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y + 4, PlayState.fireLayerV, 143);
-				Core.Items.Item.itemDrop(x ,y + 4);
+				Core.Items.Item.itemDrop(x ,y + 4, p.bombLength, p.bombsActive);
 			}
 			//If no boxes within blast radius range		
 			if(PlayState.map.getTileId(x, y + 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y + 1, PlayState.wallLayer ) == 98){
@@ -314,7 +315,7 @@ public class Bombs {
 			}
 			if (PlayState.map.getTileId(x, y + 1, PlayState.boxLayer) == 0 && hitWallDown1 != true) {
 				PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
-				Core.Items.Item.itemDrop(x ,y + 1);
+				Core.Items.Item.itemDrop(x ,y + 1, p.bombLength, p.bombsActive);
 				if(PlayState.map.getTileId(x, y + 2, PlayState.wallLayer) == 98){
 					hitWallDown1 = true;
 					}
@@ -322,7 +323,7 @@ public class Bombs {
 				if(PlayState.map.getTileId(x, y + 2, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallDown1 != true){
 					PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 					PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
-					Core.Items.Item.itemDrop(x ,y + 2);
+					Core.Items.Item.itemDrop(x ,y + 2, p.bombLength, p.bombsActive);
 					if(PlayState.map.getTileId(x, y + 3, PlayState.wallLayer) == 98){
 						hitWallDown1 = true;							
 						}
@@ -331,7 +332,7 @@ public class Bombs {
 						PlayState.map.setTileId(x, y + 1, PlayState.fireLayerV, 143);
 						PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 						PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
-						Core.Items.Item.itemDrop(x ,y + 3);							
+						Core.Items.Item.itemDrop(x ,y + 3, p.bombLength, p.bombsActive);							
 						if(PlayState.map.getTileId(x, y + 4, PlayState.wallLayer) == 98){
 							hitWallDown1 = true;					
 							}
@@ -341,7 +342,7 @@ public class Bombs {
 							PlayState.map.setTileId(x, y + 2, PlayState.fireLayerV, 143);
 							PlayState.map.setTileId(x, y + 3, PlayState.fireLayerV, 143);
 							PlayState.map.setTileId(x, y + 4, PlayState.fireLayerV, 143);
-							Core.Items.Item.itemDrop(x ,y + 4);
+							Core.Items.Item.itemDrop(x ,y + 4, p.bombLength, p.bombsActive);
 							}
 					}
 				}	
@@ -357,7 +358,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y - 1, PlayState.boxLayer, 0);
 				PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
 				hitBoxUp = true;
-				Core.Items.Item.itemDrop(x ,y - 1);
+				Core.Items.Item.itemDrop(x ,y - 1, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x, y - 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y - 1, PlayState.wallLayer ) == 98){
 				hitWallUp = true;
@@ -367,7 +368,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
 				hitBoxUp = true;
-				Core.Items.Item.itemDrop(x ,y - 2);
+				Core.Items.Item.itemDrop(x ,y - 2, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x, y - 2, PlayState.wallLayer) == 98){
 				hitWallUp = true;
@@ -378,7 +379,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y - 3, PlayState.fireLayerV, 143);
 				hitBoxUp = true;
-				Core.Items.Item.itemDrop(x ,y - 3);
+				Core.Items.Item.itemDrop(x ,y - 3, p.bombLength, p.bombsActive);
 			}
 			else if(PlayState.map.getTileId(x, y - 3, PlayState.wallLayer) == 98){
 				hitWallUp = true;
@@ -389,7 +390,7 @@ public class Bombs {
 				PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y - 3, PlayState.fireLayerV, 143);
 				PlayState.map.setTileId(x, y - 4, PlayState.fireLayerV, 143);
-				Core.Items.Item.itemDrop(x ,y - 4);
+				Core.Items.Item.itemDrop(x ,y - 4, p.bombLength, p.bombsActive);
 			}
 			//If no boxes within blast radius range
 			if(PlayState.map.getTileId(x, y - 1, PlayState.wallLayer) == 18 || PlayState.map.getTileId(x, y - 1, PlayState.wallLayer ) == 98){
@@ -397,7 +398,7 @@ public class Bombs {
 			}
 			if (PlayState.map.getTileId(x, y - 1, PlayState.boxLayer) == 0 && hitWallUp1 != true) {
 				PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
-				Core.Items.Item.itemDrop(x ,y - 1);
+				Core.Items.Item.itemDrop(x ,y - 1, p.bombLength, p.bombsActive);
 				if(PlayState.map.getTileId(x, y - 2, PlayState.wallLayer) == 98){
 					hitWallUp1 = true;
 					}
@@ -405,7 +406,7 @@ public class Bombs {
 				if(PlayState.map.getTileId(x, y - 2, PlayState.boxLayer) == 0 && blastRadius >= 2 && hitWallUp1 != true){
 					PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
 					PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
-					Core.Items.Item.itemDrop(x ,y - 2);
+					Core.Items.Item.itemDrop(x ,y - 2, p.bombLength, p.bombsActive);
 					if(PlayState.map.getTileId(x, y - 3, PlayState.wallLayer) == 98){
 						hitWallUp1 = true;							
 						}
@@ -414,7 +415,7 @@ public class Bombs {
 						PlayState.map.setTileId(x, y - 1, PlayState.fireLayerV, 143);
 						PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
 						PlayState.map.setTileId(x, y - 3, PlayState.fireLayerV, 143);
-						Core.Items.Item.itemDrop(x ,y - 3);							
+						Core.Items.Item.itemDrop(x ,y - 3, p.bombLength, p.bombsActive);							
 						if(PlayState.map.getTileId(x, y - 4, PlayState.wallLayer) == 98){
 							hitWallUp1 = true;						
 							}
@@ -424,7 +425,7 @@ public class Bombs {
 							PlayState.map.setTileId(x, y - 2, PlayState.fireLayerV, 143);
 							PlayState.map.setTileId(x, y - 3, PlayState.fireLayerV, 143);
 							PlayState.map.setTileId(x, y - 4, PlayState.fireLayerV, 143);
-							Core.Items.Item.itemDrop(x ,y - 3);
+							Core.Items.Item.itemDrop(x ,y - 3, p.bombLength, p.bombsActive);
 							}
 					}
 				}	
