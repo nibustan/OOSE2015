@@ -124,11 +124,13 @@ public class PlayState extends BasicGameState{
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)throws SlickException {
 		//GUI
-		g.drawString("P1 Blvl = "+ String.valueOf(player1.bombLength), 540, 50);
-		g.drawString("P1 BAct = "+ String.valueOf(player1.bombsActive), 540, 75);
+		g.drawString("P1 Blvl = "+ String.valueOf(player1.bombLength), 560, 50);
+		g.drawString("P1 BAct = "+ String.valueOf(player1.bombsActive), 560, 75);
+		g.drawString("P1 BAm = "+ String.valueOf(player1.bombAmount), 560, 100);
 		
-		g.drawString("P2 Blvl = "+ String.valueOf(player2.bombLength), 540, 350);
-		g.drawString("P1 BAct = " + String.valueOf(player1.bombsActive), 540,325);
+		g.drawString("P2 Blvl = "+ String.valueOf(player2.bombLength), 560, 350);
+		g.drawString("P2 BAct = " + String.valueOf(player2.bombsActive), 560,325);
+		g.drawString("P2 BAm = "+ String.valueOf(player2.bombAmount), 560, 300);
 		
 		g.drawString("P1 " + GameController.gamesWon1 + " - "+GameController.gamesWon2 + " P2", 552,208);
 		/*

@@ -1,6 +1,8 @@
 package Core.Items;
 import java.util.Random;
+
 import Core.GameState.PlayState;
+import Core.Player.Player;
 
 
 //	Items spawn from destroyed box objects
@@ -76,12 +78,12 @@ public class Item {
 	 * @param bombAmount = number of active bombs a player can have on the map at a time.
 	 * @return = changed bombAmount
 	 */
-	public static int bombUp(int x, int y,int bombAmount){
-		PlayState.map.setTileId(x, y, PlayState.bombUpLayer, 155);
-		
-		if(bombAmount > 4){
-			bombAmount++;
+	public static int bombUp(int x, int y){
+		if(Player.bombAmount < 4){
+			Player.bombAmount++;
+			System.out.println("bombUp");
 		}
+		PlayState.map.setTileId(x, y, PlayState.bombUpLayer, 155);
 		return bombAmount;
 	}
 	
@@ -92,12 +94,12 @@ public class Item {
 	 * @param bombAmount = number of active bombs a player can have on the map at a time.
 	 * @return = changed bombAmount
 	 */
-	public static int bombDown(int x, int y,int bombAmount){
-		PlayState.map.setTileId(x, y, PlayState.bombDownLayer, 165);
-		
-		if(bombAmount > 1){
-			bombAmount--;
+	public static int bombDown(int x, int y){		
+		if(Player.bombAmount > 1){
+			Player.bombAmount--;
+			System.out.println("bombDown");
 		}
+		PlayState.map.setTileId(x, y, PlayState.bombDownLayer, 165);
 		return bombAmount;
 	}
 	
@@ -108,12 +110,12 @@ public class Item {
 	 * @param bombLength = number that determines how many tilelengths a fireblast travels.
 	 * @return = changed bombLength
 	 */
-	public static int fireUp(int x, int y,int bombLength){
-		PlayState.map.setTileId(x, y, PlayState.fireUpLayer, 175);
-		
-		if(bombLength < 7){
-			bombLength++;
+	public static int fireUp(int x, int y){
+		if(Player.bombLength < 7){
+			Player.bombLength++;
+			System.out.println("fireUp");
 		}
+		PlayState.map.setTileId(x, y, PlayState.fireUpLayer, 175);
 		return bombLength;
 	}
 	
@@ -124,12 +126,12 @@ public class Item {
 	 * @param bombLength = number that determines how many tilelengths a fireblast travels.
 	 * @return = changed bombLength
 	 */
-	public static int fireDown(int x, int y, int bombLength){
-		PlayState.map.setTileId(x, y, PlayState.fireDownLayer, 185);
-		
-		if(bombLength > 1){
-			bombLength--;
+	public static int fireDown(int x, int y){
+		if(Player.bombLength > 1){
+			Player.bombLength--;
+			System.out.println("fireDown");
 		}
+		PlayState.map.setTileId(x, y, PlayState.fireDownLayer, 185);
 		return bombLength;
 	}
 	
@@ -140,11 +142,10 @@ public class Item {
 	 * @param bombLength = number that determines how many tilelengths a fireblast travels.
 	 * @return = changed bombLength
 	 */
-	public static int powerBomb(int x, int y,int bombLength){
+	public static int powerBomb(int x, int y){
+		//Player.bombLength = 12;
+		System.out.println("powerBomb");
 		PlayState.map.setTileId(x, y, PlayState.powerBombLayer, 195);
-		
-		bombLength = 12;
-		
 		return bombLength;
 	}
 }

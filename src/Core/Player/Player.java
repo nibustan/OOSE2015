@@ -18,9 +18,9 @@ public class Player {
 	
 	//Player Attributes
 	
-	public int bombAmount = 1; //Determines the maximum amount of bombs allowed to be placed at a time.
-	public int bombLength;	// Determines how big of a blastradius the players bomb will travel in each direction.
-	public int bombsActive = 0;	// Indicates how many bombs a player has on the field at a time.
+	public static int bombAmount = 1; //Determines the maximum amount of bombs allowed to be placed at a time.
+	public static int bombLength;	// Determines how big of a blastradius the players bomb will travel in each direction.
+	public static int bombsActive = 0;	// Indicates how many bombs a player has on the field at a time.
 	public int inControl; //The number selects the player: 1 = Player 1, 2 = Player 2.
 	public boolean hitByFire = false;
 	
@@ -247,7 +247,7 @@ public class Player {
 	public void placeBomb(GameContainer gc)throws SlickException{
 		if (inControl == 1 && hitByFire == false) {
 			if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
-				if (bombs.size() < 3
+				if (bombs.size() < bombAmount
 						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {
 					bombs.add(new Bombs(x, y, bombLength));
 					bombs.get(bombs.size() - 1).init();
@@ -258,7 +258,7 @@ public class Player {
 		}
 		if (inControl == 2 && hitByFire == false) {
 			if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
-				if (bombs2.size() < 3
+				if (bombs2.size() < bombAmount
 						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {
 					bombs2.add(new Bombs(x, y, bombLength));
 					bombs2.get(bombs2.size() - 1).init();
@@ -271,19 +271,19 @@ public class Player {
 	
 	public void pickUp(){
 		if(PlayState.map.getTileId(x, y, PlayState.bombUpLayer) == 213){
-			Item.bombUp(x, y, bombAmount);
+			Item.bombUp(x, y);
 		}
 		if(PlayState.map.getTileId(x, y, PlayState.bombDownLayer) == 214){
-			Item.bombDown(x, y, bombAmount);
+			Item.bombDown(x, y);
 		}
 		if(PlayState.map.getTileId(x, y, PlayState.fireUpLayer) == 215){
-			Item.fireUp(x, y, bombLength);
+			Item.fireUp(x, y);
 		}
 		if(PlayState.map.getTileId(x, y, PlayState.fireDownLayer) == 216){
-			Item.fireDown(x, y, bombLength);
+			Item.fireDown(x, y);
 		}
 		if(PlayState.map.getTileId(x, y, PlayState.powerBombLayer) == 217){
-			Item.powerBomb(x, y, bombLength);
+			Item.powerBomb(x, y);
 		}
 	}
 }
