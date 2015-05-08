@@ -1,3 +1,9 @@
+# Bomberman
+
+This game, based on the early Bomberman games, is developed by Jacob Hagerup Godt, Hans Emil Hoppe Rauer & Nicklas Bundgaard Stavad Andersen from Aalborg University Copenhagen. The objective of the game is to kill the other player with bombs. The game features destructable crates, that drops loot which either powers up or powers down a players bombs. 
+
+Good Luck.
+
 # Slick2D Eclipse Seed Project
 This an eclipse project containing all the files necessary to begin developing games with [Slick 2D](http://slick.ninjacave.com/). You can fork this repository, clone it on your disk and start to work in Eclipse.
 
