@@ -42,13 +42,14 @@ public class PlayState extends BasicGameState{
 	public static int powerBombLayer;
 	
 	public static boolean loadingScores = false;
-	
+		
 	/**
 	 * Initializes two Player: player1 & player2. Each is assigned a number, 
 	 * which is used for the variable inControl from the Player class.
 	 */
 	Player player1 = new Player(1);
 	Player player2 = new Player(2);
+	public boolean countOnlyFuckingOnes = true;
 		
 	public PlayState(int state){
 	}
@@ -129,11 +130,13 @@ public class PlayState extends BasicGameState{
 		g.drawString("P2 Blvl = "+ String.valueOf(player2.bombLength), 540, 350);
 		g.drawString("P1 BAct = " + String.valueOf(player1.bombsActive), 540,325);
 		
+		g.drawString("P1 " + GameController.gamesWon1 + " - "+GameController.gamesWon2 + " P2", 552,208);
+		/*
 		if(GameController.drawScores == true){
 			System.out.println("Drawing scores");
 			g.drawString(GameController.gamesWon1+" - "+GameController.gamesWon2, 552,208);
 		}
-		
+		*/
 		//Render Map
 		map.render(0, 0, floorLayer);
 		
@@ -242,22 +245,24 @@ public class PlayState extends BasicGameState{
 		if(player1.hitByFire == true){
 			player1.renderPlayer = false;
 			loadingScores = true;
-			if(player2.alive == true){
-				GameController.player2Alive = true;
-			}
-			if(loadingScores == true){
+			GameController.player1Alive = false;
+			GameController.playersAlive--;
+			if(GameController.player2Alive == true && countOnlyFuckingOnes == true){
+				GameController.gamesWon2++;
 				GameController.update();
+				countOnlyFuckingOnes = false;
 			}
 		}
 		
 		if(player2.hitByFire == true){
 			player2.renderPlayer = false;
 			loadingScores = true;
-			if(player1.alive == true){
-				GameController.player1Alive = true;
-			}
-			if(loadingScores == true){
+			GameController.player2Alive = false;
+			GameController.playersAlive--;
+			if(GameController.player1Alive == true && countOnlyFuckingOnes == true){
+				GameController.gamesWon1++;
 				GameController.update();
+				countOnlyFuckingOnes = false;
 			}
 		}
 		

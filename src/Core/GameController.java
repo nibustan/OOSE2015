@@ -3,7 +3,7 @@ package Core;
 import Core.GameState.PlayState;
 
 public class GameController {
-	private static byte playersAlive = 2;
+	public static byte playersAlive = 2;
 	public static boolean player1Alive = true;
 	public static boolean player2Alive = true;
 	public static boolean drawScores;
@@ -33,16 +33,6 @@ public class GameController {
 	public static void update() {
 		startLoading = true;
 		if (playersAlive < 2) {
-			if (player1Alive == true) {
-				++gamesWon1;
-			} else if (player2Alive == true) {
-				++gamesWon2;
-			} 
-			if (gamesWon1 < 3 && gamesWon2 < 3) {
-				if(startLoadNextTurn == true){
-					loadNextTurn();
-				}
-			}
 			if (gamesWon1 < 3 && gamesWon2 < 3) {
 				loadNextTurn();
 			} else if (gamesWon1 > 2 && gamesWon1 > gamesWon2) {
@@ -52,10 +42,8 @@ public class GameController {
 				player2Win = true;
 				loadScoreScreen();
 			}
-			if(startLoading == true){
+			if(startLoading == true)
 				startLoading = false;
-				startLoadNextTurn = true;
-			}
 		}
 	}
 	/**
@@ -64,13 +52,13 @@ public class GameController {
 	 */
 	static void loadNextTurn() {
 		loadTimerDif = System.currentTimeMillis();
-		drawScores = true;
 		if(loadTimerDif-loadingStart > loadingTime){
-			drawScores = false;
 			PlayState.loadingScores = false;
 			playersAlive = 2;
 			++gameTurn;
 			startLoadNextTurn=false;
+			player2Alive = true;
+			player1Alive = true;
 		}
 		
 	}

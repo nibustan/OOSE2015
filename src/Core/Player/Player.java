@@ -76,7 +76,7 @@ public class Player {
 	public void movement(GameContainer gc)throws SlickException{
 		
 		//Player 1
-		if(inControl == 1){
+		if(inControl == 1 && hitByFire == false){
 			// Move Player Right
 			if (gc.getInput().isKeyPressed(Input.KEY_D)) {
 				PlayState.map.setTileId(x, y, PlayState.player1Layer1, 1);
@@ -146,16 +146,16 @@ public class Player {
 				}
 			}
 			//Check if player1 is inside of a blast
-			if(PlayState.map.getTileId(x,y, PlayState.fireLayerH) ==  133
+			/*if(PlayState.map.getTileId(x,y, PlayState.fireLayerH) ==  133
 						|| PlayState.map.getTileId(x,y, PlayState.fireLayerV) ==  143
 								||PlayState.map.getTileId(x,y, PlayState.fireLayer) ==  123){
 				init();
 				Core.GameController.player1Alive = false;
-			}
+			}*/
 		}
 		
 		//player2
-		if(inControl == 2){
+		if(inControl == 2 && hitByFire == false){
 			//Move player2 right
 			if (gc.getInput().isKeyPressed(Input.KEY_L)) {
 				PlayState.map.setTileId(x, y, PlayState.player2Layer1, 5);
@@ -228,12 +228,12 @@ public class Player {
 				}
 			}
 			//Check if player2 is inside of a blast
-			if(PlayState.map.getTileId(x,y, PlayState.fireLayerH) ==  133
+			/*if(PlayState.map.getTileId(x,y, PlayState.fireLayerH) ==  133
 					|| PlayState.map.getTileId(x,y, PlayState.fireLayerV) ==  143
 							||PlayState.map.getTileId(x,y, PlayState.fireLayer) ==  123){
 				init();
 				Core.GameController.player2Alive = false;
-			}
+			}*/
 		}
 		
 		
@@ -245,7 +245,7 @@ public class Player {
 	 * @throws SlickException = A generic exception thrown by everything in the Slick2D library.
 	 */
 	public void placeBomb(GameContainer gc)throws SlickException{
-		if (inControl == 1) {
+		if (inControl == 1 && hitByFire == false) {
 			if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
 				if (bombs.size() < 3
 						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {
@@ -256,7 +256,7 @@ public class Player {
 				}
 			}
 		}
-		if (inControl == 2) {
+		if (inControl == 2 && hitByFire == false) {
 			if (gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
 				if (bombs2.size() < 3
 						&& PlayState.map.getTileId(x, y, PlayState.bombLayer) != 25) {
