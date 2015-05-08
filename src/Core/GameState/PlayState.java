@@ -7,7 +7,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-import Core.GameController;
 import Core.Player.Player;
 
 public class PlayState extends BasicGameState{	
@@ -41,15 +40,13 @@ public class PlayState extends BasicGameState{
 	
 	public static int powerBombLayer;
 	
-	public static boolean loadingScores = false;
-	
 	/**
 	 * Initializes two Player: player1 & player2. Each is assigned a number, 
 	 * which is used for the variable inControl from the Player class.
 	 */
 	Player player1 = new Player(1);
 	Player player2 = new Player(2);
-		
+	
 	public PlayState(int state){
 	}
 	
@@ -122,17 +119,11 @@ public class PlayState extends BasicGameState{
 	 */
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)throws SlickException {
-		//GUI
+		
 		g.drawString("P1 Blvl = "+ String.valueOf(player1.bombLength), 540, 50);
 		g.drawString("P1 BAct = "+ String.valueOf(player1.bombsActive), 540, 75);
 		
 		g.drawString("P2 Blvl = "+ String.valueOf(player2.bombLength), 540, 350);
-		g.drawString("P1 BAct = " + String.valueOf(player1.bombsActive), 540,325);
-		
-		if(GameController.drawScores == true){
-			System.out.println("Drawing scores");
-			g.drawString(GameController.gamesWon1+" - "+GameController.gamesWon2, 552,208);
-		}
 		
 		//Render Map
 		map.render(0, 0, floorLayer);
@@ -162,37 +153,33 @@ public class PlayState extends BasicGameState{
 						if(map.getTileId(x, y, bombLayer) == 25){
 							map.render(x*32, y*32, 16, 4, 1, 1);
 						}
-						if(player1.renderPlayer == true){
-								
-							//Player1
-							if(map.getTileId(x, y, player1Layer1) != 1 && map.getTileId(x, y, player1Layer2) != 0){
-								map.render(x*32, y*32, 15, 2, 1, 1);
-							}
-							if(map.getTileId(x, y, player1Layer2) != 2 && map.getTileId(x, y, player1Layer2) != 0){
-								map.render(x*32, y*32, 15, 4, 1, 1);
-							}
-							if(map.getTileId(x, y, player1Layer3) != 3 && map.getTileId(x, y, player1Layer3) != 0){
-								map.render(x*32, y*32, 15, 6, 1, 1);
-							}
-							if(map.getTileId(x, y, player1Layer4) != 4 && map.getTileId(x, y, player1Layer4 ) != 0){
-								map.render(x*32, y*32, 15, 8, 1, 1);
-							}
+						
+						//Player1
+						if(map.getTileId(x, y, player1Layer1) != 1 && map.getTileId(x, y, player1Layer2) != 0){
+							map.render(x*32, y*32, 15, 2, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer2) != 2 && map.getTileId(x, y, player1Layer2) != 0){
+							map.render(x*32, y*32, 15, 4, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer3) != 3 && map.getTileId(x, y, player1Layer3) != 0){
+							map.render(x*32, y*32, 15, 6, 1, 1);
+						}
+						if(map.getTileId(x, y, player1Layer4) != 4 && map.getTileId(x, y, player1Layer4 ) != 0){
+							map.render(x*32, y*32, 15, 8, 1, 1);
 						}
 						
-						if(player2.renderPlayer == true){
 						//Player2
-							if(map.getTileId(x, y, player2Layer1) != 5 && map.getTileId(x, y, player2Layer2) != 0){
-								map.render(x*32, y*32, 15, 3, 1, 1);
-							}
-							if(map.getTileId(x, y, player2Layer2) != 6 && map.getTileId(x, y, player2Layer2) != 0){
-								map.render(x*32, y*32, 15, 5, 1, 1);
-							}
-							if(map.getTileId(x, y, player2Layer3) != 7 && map.getTileId(x, y, player2Layer3) != 0){
-								map.render(x*32, y*32, 15, 7, 1, 1);
-							}
-							if(map.getTileId(x, y, player2Layer4) != 8 && map.getTileId(x, y, player2Layer4 ) != 0){
-								map.render(x*32, y*32, 15, 9, 1, 1);
-							}
+						if(map.getTileId(x, y, player2Layer1) != 5 && map.getTileId(x, y, player2Layer2) != 0){
+							map.render(x*32, y*32, 15, 3, 1, 1);
+						}
+						if(map.getTileId(x, y, player2Layer2) != 6 && map.getTileId(x, y, player2Layer2) != 0){
+							map.render(x*32, y*32, 15, 5, 1, 1);
+						}
+						if(map.getTileId(x, y, player2Layer3) != 7 && map.getTileId(x, y, player2Layer3) != 0){
+							map.render(x*32, y*32, 15, 7, 1, 1);
+						}
+						if(map.getTileId(x, y, player2Layer4) != 8 && map.getTileId(x, y, player2Layer4 ) != 0){
+							map.render(x*32, y*32, 15, 9, 1, 1);
 						}
 					
 					}			
@@ -205,6 +192,11 @@ public class PlayState extends BasicGameState{
 	 */
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int i)throws SlickException {
+
+		//Change State
+		if(gc.getInput().isKeyPressed(Input.KEY_Z)){
+			sbg.enterState(2);
+		}
 		
 		player1.movement(gc);
 		player1.placeBomb(gc);
@@ -214,37 +206,15 @@ public class PlayState extends BasicGameState{
 		player2.placeBomb(gc);
 		player2.update(gc);
 		
-		//Player death
-		if(player1.hitByFire == true){
-			player1.renderPlayer = false;
-			loadingScores = true;
-			if(player2.alive == true){
-				GameController.player2Alive = true;
-			}
-			if(loadingScores == true){
-				GameController.update();
-			}
-		}
-		
-		if(player2.hitByFire == true){
-			player2.renderPlayer = false;
-			loadingScores = true;
-			if(player1.alive == true){
-				GameController.player1Alive = true;
-			}
-			if(loadingScores == true){
-				GameController.update();
-			}
-		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_U)) {
-			if(player1.bombLength < 4){
+			if(player1.bombLength <4 ){
 			player1.bombLength++;
 			}
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_Y)) {
-			if(player2.bombLength < 4){
+			if(player2.bombLength <4 ){
 			player2.bombLength++;
 			}
 		}
