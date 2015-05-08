@@ -1,7 +1,11 @@
 package Core;
 
 public class GameController {
+<<<<<<< HEAD
 	private byte playersAlive;
+=======
+	public static byte playersAlive = 2;
+>>>>>>> origin/master
 	public static boolean player1Alive = true;
 	public static boolean player2Alive = true;
 	private byte gamesWon1;
@@ -23,8 +27,9 @@ public class GameController {
 
 		if (playersAlive < 2) {
 			if (player1Alive == true) {
-				++gamesWon1;
+				gamesWon1++;
 			} else if (player2Alive == true) {
+<<<<<<< HEAD
 				++gamesWon2;
 			} else if (player1Alive == false && player2Alive == false
 					&& gamesWon1 > 0 && gamesWon2 > 0) {
@@ -33,6 +38,14 @@ public class GameController {
 			}
 			if (gamesWon1 < 3 && gamesWon2 < 3) {
 				loadNextTurn();
+=======
+				gamesWon2++;
+			} 
+			if (gamesWon1 < 3 && gamesWon2 < 3) {
+				if(startLoadNextTurn == true){
+					loadNextTurn();
+				}
+>>>>>>> origin/master
 			} else if (gamesWon1 > 2 && gamesWon1 > gamesWon2) {
 				player1Win = true;
 				loadScoreScreen();
@@ -51,8 +64,12 @@ public class GameController {
 		playersAlive = 2;
 		++gameTurn;
 	}
+<<<<<<< HEAD
 
 	void loadScoreScreen() {
+=======
+	static void loadScoreScreen() {
+>>>>>>> origin/master
 
 	}
 }
