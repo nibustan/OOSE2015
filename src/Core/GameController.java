@@ -3,7 +3,7 @@ package Core;
 import Core.GameState.PlayState;
 
 public class GameController {
-	private static byte playersAlive = 2;
+	public static byte playersAlive = 2;
 	public static boolean player1Alive = true;
 	public static boolean player2Alive = true;
 	public static boolean drawScores;
@@ -34,9 +34,9 @@ public class GameController {
 		startLoading = true;
 		if (playersAlive < 2) {
 			if (player1Alive == true) {
-				++gamesWon1;
+				gamesWon1++;
 			} else if (player2Alive == true) {
-				++gamesWon2;
+				gamesWon2++;
 			} 
 			if (gamesWon1 < 3 && gamesWon2 < 3) {
 				if(startLoadNextTurn == true){

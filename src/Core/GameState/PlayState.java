@@ -128,11 +128,13 @@ public class PlayState extends BasicGameState{
 		
 		g.drawString("P2 Blvl = "+ String.valueOf(player2.bombLength), 540, 350);
 		g.drawString("P1 BAct = " + String.valueOf(player1.bombsActive), 540,325);
+
+		g.drawString(GameController.gamesWon1+" - "+GameController.gamesWon2, 552,208);
 		
-		if(GameController.drawScores == true){
+		/*if(GameController.drawScores == true){
 			System.out.println("Drawing scores");
 			g.drawString(GameController.gamesWon1+" - "+GameController.gamesWon2, 552,208);
-		}
+		}*/
 		
 		//Render Map
 		map.render(0, 0, floorLayer);
@@ -214,10 +216,13 @@ public class PlayState extends BasicGameState{
 		player2.placeBomb(gc);
 		player2.update(gc);
 		
+		
 		//Player death
 		if(player1.hitByFire == true){
 			player1.renderPlayer = false;
+			GameController.playersAlive--;
 			loadingScores = true;
+			GameController.player1Alive = false;
 			if(player2.alive == true){
 				GameController.player2Alive = true;
 			}
@@ -228,7 +233,9 @@ public class PlayState extends BasicGameState{
 		
 		if(player2.hitByFire == true){
 			player2.renderPlayer = false;
+			GameController.playersAlive--;
 			loadingScores = true;
+			GameController.player2Alive = false;
 			if(player1.alive == true){
 				GameController.player1Alive = true;
 			}
