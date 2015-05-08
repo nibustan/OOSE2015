@@ -42,9 +42,6 @@ public class GameController {
 				if(startLoadNextTurn == true){
 					loadNextTurn();
 				}
-			}
-			if (gamesWon1 < 3 && gamesWon2 < 3) {
-				loadNextTurn();
 			} else if (gamesWon1 > 2 && gamesWon1 > gamesWon2) {
 				player1Win = true;
 				loadScoreScreen();
@@ -74,7 +71,6 @@ public class GameController {
 		}
 		
 	}
-
 	static void loadScoreScreen() {
 
 	}
