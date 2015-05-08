@@ -33,9 +33,9 @@ public class GameController {
 	public static void update() {
 		startLoading = true;
 		if (playersAlive < 2) {
-			if (player1Alive == true) {
+			if (player1Alive == true && player2Alive == false) {
 				gamesWon1++;
-			} else if (player2Alive == true) {
+			} else if (player2Alive == true && player1Alive == false) {
 				gamesWon2++;
 			} 
 			if (gamesWon1 < 3 && gamesWon2 < 3) {
@@ -68,6 +68,8 @@ public class GameController {
 			playersAlive = 2;
 			++gameTurn;
 			startLoadNextTurn=false;
+			player1Alive = true;
+			player2Alive = true;
 		}
 		
 	}
