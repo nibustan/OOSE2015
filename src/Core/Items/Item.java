@@ -56,15 +56,15 @@ public class Item {
 		Random rand = new Random();
 		int randomNum = rand.nextInt((max-min)+1)+min;
 		if(randomNum == 1){
-			bombUp(x,y,bombAmount);
+			PlayState.map.setTileId(x, y, PlayState.bombUpLayer, 213);
 		} else if (randomNum == 2){
-			bombDown(x,y,bombAmount);
+			PlayState.map.setTileId(x, y, PlayState.bombDownLayer, 214);
 		} else if (randomNum == 3){
-			fireUp(x,y,bombLength);
+			PlayState.map.setTileId(x, y, PlayState.fireUpLayer, 215);
 		} else if (randomNum == 4){
-			fireDown(x,y,bombLength);
+			PlayState.map.setTileId(x, y, PlayState.fireDownLayer, 216);
 		} else if (randomNum == 5){
-			powerBomb(x,y,bombLength);
+			PlayState.map.setTileId(x, y, PlayState.powerBombLayer, 217);
 		}
 	}
 	
@@ -124,7 +124,7 @@ public class Item {
 	 * @param bombLength = number that determines how many tilelengths a fireblast travels.
 	 * @return = changed bombLength
 	 */
-	public static int fireDown(int x, int y,int bombLength){
+	public static int fireDown(int x, int y, int bombLength){
 		PlayState.map.setTileId(x, y, PlayState.fireDownLayer, 185);
 		
 		if(bombLength > 1){

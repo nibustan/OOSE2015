@@ -8,6 +8,7 @@ import org.newdawn.slick.SlickException;
 
 import Core.GameState.PlayState;
 import Core.Items.Bombs;
+import Core.Items.Item;
 
 public class Player {
 
@@ -17,6 +18,7 @@ public class Player {
 	
 	//Player Attributes
 	
+	public int bombAmount = 1; //Determines the maximum amount of bombs allowed to be placed at a time.
 	public int bombLength;	// Determines how big of a blastradius the players bomb will travel in each direction.
 	public int bombsActive = 0;	// Indicates how many bombs a player has on the field at a time.
 	public int inControl; //The number selects the player: 1 = Player 1, 2 = Player 2.
@@ -264,6 +266,24 @@ public class Player {
 					bombsActive++;
 				}
 			}
+		}
+	}
+	
+	public void pickUp(){
+		if(PlayState.map.getTileId(x, y, PlayState.bombUpLayer) == 213){
+			Item.bombUp(x, y, bombAmount);
+		}
+		if(PlayState.map.getTileId(x, y, PlayState.bombDownLayer) == 214){
+			Item.bombDown(x, y, bombAmount);
+		}
+		if(PlayState.map.getTileId(x, y, PlayState.fireUpLayer) == 215){
+			Item.fireUp(x, y, bombLength);
+		}
+		if(PlayState.map.getTileId(x, y, PlayState.fireDownLayer) == 216){
+			Item.fireDown(x, y, bombLength);
+		}
+		if(PlayState.map.getTileId(x, y, PlayState.powerBombLayer) == 217){
+			Item.powerBomb(x, y, bombLength);
 		}
 	}
 }

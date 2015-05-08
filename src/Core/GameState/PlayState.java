@@ -194,6 +194,28 @@ public class PlayState extends BasicGameState{
 								map.render(x*32, y*32, 15, 9, 1, 1);
 							}
 						}
+						
+						//Render Items
+						//Bomb Up render
+						if(map.getTileId(x, y, bombUpLayer) == 213){
+							map.render(x*32, y*32, 16, 2, 1, 1);
+						}
+						//Bomb Down render
+						if(map.getTileId(x, y, bombDownLayer) == 214){
+							map.render(x*32, y*32, 16, 3, 1, 1);
+						}
+						//Fire Up layer
+						if(map.getTileId(x, y, fireUpLayer) == 215){
+							map.render(x*32, y*32, 16, 8, 1, 1);
+						}
+						//Fire Down layer
+						if(map.getTileId(x, y, fireDownLayer) == 216){
+							map.render(x*32, y*32, 16, 9, 1, 1);
+						}
+						//Power Bomb layer
+						if(map.getTileId(x, y, powerBombLayer) == 217){
+							map.render(x*32, y*32, 15, 10, 1, 1);
+						}
 					
 					}			
 				}
@@ -208,10 +230,12 @@ public class PlayState extends BasicGameState{
 		
 		player1.movement(gc);
 		player1.placeBomb(gc);
+		player1.pickUp();
 		player1.update(gc);
 		
 		player2.movement(gc);
 		player2.placeBomb(gc);
+		player2.pickUp();
 		player2.update(gc);
 		
 		//Player death
