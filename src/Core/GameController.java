@@ -1,26 +1,19 @@
 package Core;
 
-import Core.GameState.PlayState;
-
 public class GameController {
+<<<<<<< HEAD
+	private byte playersAlive;
+=======
 	public static byte playersAlive = 2;
+>>>>>>> origin/master
 	public static boolean player1Alive = true;
 	public static boolean player2Alive = true;
-	public static boolean drawScores;
-	public static byte gamesWon1 = 0;
-	public static byte gamesWon2 = 0;
-	private static byte gameTurn = 1;
-	private static long loadTimerDif;
-	public static boolean player1Win = false;
-	public static boolean player2Win = false;
-	
-	protected static long loadingStart;
-	protected static long loadingTimerDif;
-	protected static long loadingTime = 2000;
+	private byte gamesWon1;
+	private byte gamesWon2;
+	private byte gameTurn;
+	public boolean player1Win = false;
+	public boolean player2Win = false;
 
-	public static boolean startLoading;
-	private static boolean startLoadNextTurn;
-	
 	void init() {
 		gameTurn = 1;
 	}
@@ -30,18 +23,33 @@ public class GameController {
 	 * Updates the scores for the players and controls if a player has won more
 	 * than 2 games, it loads the score screen.
 	 */
-	public static void update() {
-		startLoading = true;
+	void update() {
+
 		if (playersAlive < 2) {
 			if (player1Alive == true && player2Alive == false) {
 				gamesWon1++;
+<<<<<<< HEAD
 			} else if (player2Alive == true && player1Alive == false) {
+=======
+			} else if (player2Alive == true) {
+<<<<<<< HEAD
+				++gamesWon2;
+			} else if (player1Alive == false && player2Alive == false
+					&& gamesWon1 > 0 && gamesWon2 > 0) {
+				--gamesWon1;
+				--gamesWon2;
+			}
+			if (gamesWon1 < 3 && gamesWon2 < 3) {
+				loadNextTurn();
+=======
+>>>>>>> origin/master
 				gamesWon2++;
 			} 
 			if (gamesWon1 < 3 && gamesWon2 < 3) {
 				if(startLoadNextTurn == true){
 					loadNextTurn();
 				}
+>>>>>>> origin/master
 			} else if (gamesWon1 > 2 && gamesWon1 > gamesWon2) {
 				player1Win = true;
 				loadScoreScreen();
@@ -49,16 +57,13 @@ public class GameController {
 				player2Win = true;
 				loadScoreScreen();
 			}
-			if(startLoading == true){
-				startLoading = false;
-				startLoadNextTurn = true;
-			}
 		}
 	}
 	/**
 	 * loadNextTurn method:
 	 * Loads level, sets the players alive to be 2, and increments the game turn.
 	 */
+<<<<<<< HEAD
 	static void loadNextTurn() {
 		loadTimerDif = System.currentTimeMillis();
 		drawScores = true;
@@ -72,8 +77,19 @@ public class GameController {
 			player2Alive = true;
 		}
 		
+=======
+	void loadNextTurn() {
+		// load level
+		playersAlive = 2;
+		++gameTurn;
+>>>>>>> origin/master
 	}
+<<<<<<< HEAD
+
+	void loadScoreScreen() {
+=======
 	static void loadScoreScreen() {
+>>>>>>> origin/master
 
 	}
 }

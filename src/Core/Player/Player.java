@@ -21,12 +21,9 @@ public class Player {
 	public int bombLength;	// Determines how big of a blastradius the players bomb will travel in each direction.
 	public int bombsActive = 0;	// Indicates how many bombs a player has on the field at a time.
 	public int inControl; //The number selects the player: 1 = Player 1, 2 = Player 2.
-	public boolean hitByFire = false;
 	
 	ArrayList<Bombs> bombs = new ArrayList<Bombs>(); // Player 1's bombs on the map.
 	ArrayList<Bombs> bombs2 = new ArrayList<Bombs>(); // Player 2's bombs on the map.
-	public boolean renderPlayer = true;
-	public boolean alive = true;
 		
 	/**
 	 * Determines which player the code will defer to.
@@ -62,9 +59,9 @@ public class Player {
 			}
 		}
 		//Fire update
-		if(PlayState.map.getTileId(x, y, PlayState.fireLayer) ==123 || PlayState.map.getTileId(x, y, PlayState.fireLayerH) == 133 || PlayState.map.getTileId(x, y, PlayState.fireLayerV) == 143){
+		/*if(PlayState.map.getTileId(x, y, PlayState.fireLayer) ==123 || PlayState.map.getTileId(x, y, fireLayerH) == 133 || PlayState.map.getTileId(x, y, fireLayerV){
 			hitByFire = true;
-		}
+		}*/
 	}
 	
 	/**
